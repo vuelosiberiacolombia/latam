@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyConnect - Vuelos Internacionales</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(100vw); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '✈️';
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #dc2626, #ef4444, #dc2626);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1f2937;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.1);
+            margin: 2rem 0;
+            border: 2px solid #fee2e2;
+        }
+
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            align-items: end;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #374151;
+        }
+
+        .form-group input, .form-group select {
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #dc2626;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+        }
+
+        .features {
+            padding: 4rem 0;
+            background: #f9fafb;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1f2937;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid #dc2626;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #dc2626;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .stats {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #dc2626;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 1rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .search-form {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">SkyConnect</div>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#vuelos">Vuelos</a></li>
+                    <li><a href="#destinos">Destinos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Vuelos Internacionales Premium</h1>
+            <p>Conectamos el mundo con los mejores precios y servicio de primera clase. Tu próxima aventura internacional está a un clic de distancia.</p>
+            
+            <div class="search-box">
+                <form class="search-form" onsubmit="buscarVuelos(event)">
+                    <div class="form-group">
+                        <label for="origen">Origen</label>
+                        <input type="text" id="origen" placeholder="Ciudad de origen" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="destino">Destino</label>
+                        <input type="text" id="destino" placeholder="Ciudad de destino" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="salida">Fecha de Salida</label>
+                        <input type="date" id="salida" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regreso">Fecha de Regreso</label>
+                        <input type="date" id="regreso">
+                    </div>
+                    <div class="form-group">
+                        <label for="pasajeros">Pasajeros</label>
+                        <select id="pasajeros">
+                            <option value="1">1 Pasajero</option>
+                            <option value="2">2 Pasajeros</option>
+                            <option value="3">3 Pasajeros</option>
+                            <option value="4">4+ Pasajeros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="search-btn">Buscar Vuelos</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>¿Por qué elegir SkyConnect?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Destinos Globales</h3>
+                    <p>Acceso a más de 500 destinos internacionales en los 5 continentes. Desde capitales europeas hasta paraísos tropicales.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Mejores Precios</h3>
+                    <p>Garantizamos los precios más competitivos del mercado. Si encuentras un precio mejor, lo igualamos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Reserva Segura</h3>
+                    <p>Sistema de reservas 100% seguro con encriptación de datos y protección total de tu información personal.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📞</div>
+                    <h3>Soporte 24/7</h3>
+                    <p>Atención al cliente las 24 horas del día, los 7 días de la semana. Siempre estamos aquí para ayudarte.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✈️</div>
+                    <h3>Aerolíneas Premium</h3>
+                    <p>Alianzas con las mejores aerolíneas internacionales para garantizar comodidad y puntualidad en cada vuelo.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎁</div>
+                    <h3>Beneficios Extra</h3>
+                    <p>Programa de lealtad con puntos, upgrades gratuitos y acceso exclusivo a ofertas especiales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>2M+</h3>
+                    <p>Pasajeros Satisfechos</p>
+                </div>
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Destinos Internacionales</p>
+                </div>
+                <div class="stat-item">
+                    <h3>150+</h3>
+                    <p>Aerolíneas Asociadas</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Soporte al Cliente</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SkyConnect</h3>
+                    <p>Tu puerta de entrada al mundo. Conectamos destinos, creamos experiencias inolvidables.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Servicios</h3>
+                    <ul>
+                        <li><a href="#">Vuelos Internacionales</a></li>
+                        <li><a href="#">Vuelos Nacionales</a></li>
+                        <li><a href="#">Paquetes Turísticos</a></li>
+                        <li><a href="#">Hoteles</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Ayuda</h3>
+                    <ul>
+                        <li><a href="#">Centro de Ayuda</a></li>
+                        <li><a href="#">Políticas de Cancelación</a></li>
+                        <li><a href="#">Equipaje</a></li>
+                        <li><a href="#">Check-in Online</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li>📧 info@skyconnect.com</li>
+                        <li>📞 +1 (800) 123-4567</li>
+                        <li>🌐 www.skyconnect.com</li>
+                        <li>📍 Ciudad Internacional</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SkyConnect. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function buscarVuelos(event) {
+            event.preventDefault();
+            
+            const origen = document.getElementById('origen').value;
+            const destino = document.getElementById('destino').value;
+            const salida = document.getElementById('salida').value;
+            const regreso = document.getElementById('regreso').value;
+            const pasajeros = document.getElementById('pasajeros').value;
+            
+            if (origen && destino && salida) {
+                alert(`🛫 Buscando vuelos de ${origen} a ${destino}\n📅 Salida: ${salida}\n${regreso ? '📅 Regreso: ' + regreso : '🎫 Solo ida'}\n👥 Pasajeros: ${pasajeros}\n\n¡Encontrando las mejores opciones para ti!`);
+            }
+        }
+
+        // Efecto de paralaje suave en el scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.header');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+
+        // Animación de contadores
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-item h3');
+            counters.forEach(counter => {
+                const target = counter.textContent.replace(/[^\d]/g, '');
+                const increment = target / 100;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = counter.textContent.replace(/\d+/, target);
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = counter.textContent.replace(/\d+/, Math.floor(current));
+                    }
+                }, 50);
+            });
+        }
+
+        // Activar animación cuando el elemento es visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        observer.observe(document.querySelector('.stats'));
+    </script>
+</body>
+</html>

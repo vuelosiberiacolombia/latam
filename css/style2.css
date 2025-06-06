@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+.gen{
+    border-radius: 5px 5px 0 0;
+    padding: 5%;
+    margin: 3% 3% 0 3%;
+    background-color: white;
+}
+
+.inp input{
+    padding: 0 0 2% 0;
+    margin-top: 10%;
+    width: 100%;
+    border-width: 0 0 1px 0;
+}
+
+.geni{
+    border-color: rgb(236, 236, 236);
+    border-style: solid;
+    border-width: 1px 0 0 0;
+    padding: 5%;
+    margin: 0 3% 3% 3%;
+    background-color: white;
+}
+
+.butt{
+    margin-top: 20%;
+    margin-bottom: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+input:focus{
+    outline: none;
+}

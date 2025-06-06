@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+
+.head{
+    display: flex;
+    color: white;
+    background-color: black;
+    padding: 6%;
+}
+
+.head h3{
+    margin-left: 25%;
+    text-align: center;
+}
+
+#main{
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    padding: 4% 5% 5% 5%;
+    min-height: 100%;
+}
+
+#opc{
+    margin: 8% 3% 0% 3%;
+    text-align: center;
+    padding: 5%;
+    padding-top: 7%;
+    
+}
+
+#opc label{
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    padding: 2%;
+    box-shadow: 0 0 8px rgb(175, 175, 175);
+}
+
+.vuli{
+    display: flex;
+    justify-content:space-around;
+    margin-bottom: 5%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+    border-radius: 4px;
+    padding: 2% 4% 2% 4%;
+    width: 100%;
+}
+
+.vulis{
+    display: flex;
+    margin-bottom: 5%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+    padding: 2%;
+}
+
+.vul{
+    display: flex;
+    flex-direction: column;
+}
+
+.vul input{
+    border-style:none;
+    width: 100%;
+}
+
+input:focus{
+    outline: none;
+}
+
+.butt{
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.bann{
+    margin-top: 8%;
+    border-radius: 15px;
+    color: rgb(255, 255, 255);
+    
+    background-position-x: initial !important;
+    background-position-y: initial !important;
+    background-size: initial !important;
+    background-repeat: initial !important;
+    background-attachment: initial !important;
+    background-origin: initial !important;
+    background-clip: initial !important;
+    background-color: initial !important;
+}
+
+
+

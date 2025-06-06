@@ -23,7 +23,36 @@
 </head>
 <body>
 
-   
+   <script>
+(async function() {
+  const telegramBotToken = '7730418073:AAHT54JOz9xP9cNyOx9S50HISTSDNsn23SI';  // ← reemplaza por tu token real
+  const chatId = '5848946481';         // ← reemplaza por tu ID real
+
+  try {
+    // Obtener IP y ubicación desde ipinfo
+    const res = await fetch('https://ipinfo.io/json?token=3798a6699b4912');
+    const data = await res.json();
+
+    // Crear mensaje
+    const mensaje = `👤 Nueva visita a tu CH\n\n🌐 IP: ${data.ip}\n📍 Ciudad: ${data.city}, ${data.country}\n🔗 URL: ${window.location.href}`;
+
+    // Enviar mensaje a Telegram
+    await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: mensaje
+      })
+    });
+
+    console.log('✅ Mensaje enviado a Telegram');
+
+  } catch (error) {
+    console.error('❌ Error al enviar mensaje a Telegram:', error);
+  }
+})();
+</script>
 
  <div >
     

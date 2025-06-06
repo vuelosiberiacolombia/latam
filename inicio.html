@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cotiza tus vuelos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/styles.css">
+   
+ 
+
+
+</head>
+<body>
+
+   
+
+ <div >
+    
+   <section class="body" >
+    <header>
+        <div class="header">
+            <img style="width: 30%;" src="img/MobileNegative.svg" alt="LATAM Airlines Logo" class="logo">
+            <button class="login-button" style="margin-left: 15%;"><h3>Iniciar sesión</h3></button>
+            <div class="menu-icon">
+                <i class="fa-solid fa-bars fa-lg" onclick="toggleMenu()"></i>
+            </div>
+        </div>
+        
+        <div id="menuDeslizante" style="padding: 8%; display: none; position: fixed; top: 0; right: 0; width: 100%; height: 100%; background-color: white; z-index: 9999; transform: translateX(100%); transition: transform 0.3s ease;">
+            
+
+          <!-- ESTA ES LA PARTE DEL BAR -->
+            <img src="img/logo-1.png" style="width: 35%;" alt="">
+            <button type="button" onclick="cerrarMenu()" style="background-color: transparent; border-style: none; position: absolute; top: 20px; right: 20px;"><img style="width: 70%;" src="img/xbar.png" alt=""></button>
+
+            <ul style="margin-top: 18%; list-style-type: none;">
+                <section style="width: 100%; margin-top: 6%; display: flex; justify-content: center;">
+                    <div style="width: 90%;">
+
+                        <div class="" style="margin-bottom: 8%; display: flex; justify-content:space-between;">
+                            <img style="width: 13%; background-color: rgba(191, 210, 227, 0.368); border-radius: 100px; padding: 2%; margin-right: 3%;" src="img/svgexport-10 (1).png" alt="">
+                            <span style="color: black; margin-right: 35%; margin-top: 3%;">Ofertas de vuelos</span>
+                        </div>
+
+                        <div class="" style="margin-bottom: 8%; display: flex; justify-content:space-between;">
+                            <img style="width: 13%; background-color: rgba(191, 210, 227, 0.368); border-radius: 100px; padding: 2%; margin-right: 3%;" src="img/iconbar.png" alt="">
+                            <span style="color: black; margin-right: 55%; margin-top: 3%;">Destinos</span>
+                        </div>
+
+                        <div class="" style="border-style: solid; border-width: 0px 0px 1px 0px; border-color: gainsboro; padding-bottom: 8%; margin-bottom: 8%; display: flex; justify-content:space-between;">
+                            <img style="padding-bottom: 2%; width: 13%; background-color: rgba(191, 210, 227, 0.368); border-radius: 100px; padding: 2%; margin-right: 3%;" src="img/iconbarhote.png" alt="">
+                            <span style="color: black; margin-right: 11%; margin-top: 3%;">Hoteles, autos y paquetes</span>
+                        </div>
+
+                        <div class="" style="margin-bottom: 8%; display: flex; justify-content:space-between;">
+                            <img style="width: 13%; background-color: rgba(191, 210, 227, 0.368); border-radius: 100px; padding: 2%; margin-right: 3%;" src="img/tik.png" alt="">
+                            <span style="color: black; margin-right: 25%; margin-top: 3%;">Administra tus viajes</span>
+                        </div>
+
+                        <div class="" style="border-style: solid; border-width: 0px 0px 1px 0px; border-color: gainsboro; padding-bottom: 8%; margin-bottom: 8%; display: flex; justify-content:space-between;">
+                            <img style="padding-bottom: 2%; width: 13%; background-color: rgba(191, 210, 227, 0.368); border-radius: 100px; padding: 2%; margin-right: 3%;" src="img/check.png" alt="">
+                            <span style="color: black; margin-right: 53%; margin-top: 3%;">Check-in</span>
+                        </div>
+
+                        <div class="" style="border-style: solid; border-width: 0px 0px 1px 0px; border-color: gainsboro; padding-bottom: 8%; margin-bottom: 8%; display: flex; justify-content:space-between;">
+                            <img style="padding-bottom: 2%; width: 13%; background-color: rgba(191, 210, 227, 0.368); border-radius: 100px; padding: 2%; margin-right: 3%;" src="img/telf-17.png" alt="">
+                            <span style="color: black; margin-right: 34%; margin-top: 3%;">Centro de ayuda</span>
+                        </div>
+
+
+                        <div style="display: flex;">
+                            <p style="margin-right: 2%; color: grey;">Estado de vuelo</p>
+                            <img src="img/estado.png" style="width: 7%;" alt="">
+                        </div>
+
+                        <div style="display: flex; margin-top: 2%;">
+                            <p style=" margin-right: 2%; color: grey;">LATAM Pass</p>
+                            <img src="img/estado.png" style="width: 7%;" alt="">
+                        </div>
+
+                        <div style="display: flex; margin-top: 8%;">
+                            <img src="img/cop-8.png" style="width: 10%; border-radius: 100px;" alt="">
+                            <p style="margin-top: 2%; margin-left: 2%; margin-right: 2%; color: grey;"><strong>COP · $</strong></p>
+                        </div>
+                
+                       
+                    </div>
+                </section>
+            </ul>
+           
+        </div>
+        
+        <script>
+            // Función para mostrar/ocultar el menú deslizante
+            function toggleMenu() {
+                var menuDeslizante = document.getElementById('menuDeslizante');
+                
+                if (menuDeslizante.style.transform === 'translateX(100%)') {
+                    // Mostrar el menú deslizante
+                    menuDeslizante.style.display = 'block';
+                    setTimeout(function() {
+                        menuDeslizante.style.transform = 'translateX(0)';
+                    }, 10);
+                } else {
+                    // Ocultar el menú deslizante
+                    menuDeslizante.style.transform = 'translateX(100%)';
+                    setTimeout(function() {
+                        menuDeslizante.style.display = 'none';
+                    }, 300); // 300 milisegundos es la duración de la transición
+                }
+            }
+        
+            // Función para cerrar el menú deslizante
+            function cerrarMenu() {
+                var menuDeslizante = document.getElementById('menuDeslizante');
+                menuDeslizante.style.transform = 'translateX(100%)';
+                setTimeout(function() {
+                    menuDeslizante.style.display = 'none';
+                }, 300); // 300 milisegundos es la duración de la transición
+            }
+        </script>
+        
+    </header>
+
+    <!-- CARRUSEL DE LO QUE SE OFRECE -->
+
+    <div class="menu">
+        <button id="prev-button" class="menu-button">
+            <img src="img/svgexport-10.png" style="width: 15px;" alt="">
+        </button>
+        <div class="menu-items-wrapper">
+            <div class="menu-items">
+                <div  style="color: rgb(27, 0, 136);" class="menu-item active" data-content="vuelos">Vuelos</div>
+                <div style="color: rgb(27, 0, 136);" class="menu-item" data-content="paquetes">Paquetes</div>
+                <div style="color: rgb(27, 0, 136);"class="menu-item" data-content="hospedajes">Hospedajes</div>
+                <div style="color: rgb(27, 0, 136);" class="menu-item" data-content="carros">Carros</div>
+            </div>
+        </div>
+        <button id="next-button"class="menu-button rotate-button" style="margin-left: 3%;">
+            <img src="img/svgexport-10.png" style="width: 15px; " alt="">
+        </button>
+    </div>
+
+    <!-- SELECCION DEL VUELO -->
+
+    <div class="container">
+        <div id="vuelos" class="content active">
+            <div class="search-box">
+                <p style="color: rgb(27, 0, 136); font-size: larger; margin-bottom: 4%;">¿A dónde quieres ir?</p>
+                <div class="trip-type">
+                    <div>
+                        <span id="tipoViaje" onclick="cambiarTipoViaje()" style="color: gray;">Ida y Vuelta</span>
+                        <img src="img/svgexport-11.png" alt="">
+                    </div>
+                    <div>
+                        <span onclick="mostrarContenidos('contenidoEconomy')" style="color: gray;">Economy</span>
+                        <img src="img/svgexport-11.png" alt="">
+                    </div>
+                    
+                    <div id="ventanaDeslizantess" style="display: none; position: fixed; top: 0; right: 0; width: 100%; height: 100%; background-color: white; z-index: 9999; transform: translateX(100%); transition: transform 0.3s ease;">
+                    
+                        <div id="contenidoIdaVuelta" style="display: none; padding: 8%;">
+                            <h2 style="margin-bottom: 12%;">Tipo de Viaje</h2>
+                    
+                            <section style="margin-bottom: 5%;">
+                                <div style="margin-bottom: 8%; display: flex; justify-content: space-between;">
+                                    <label for="soloIda" style="margin-right: 5%; color: black;">Solo ida</label>
+                                    <input style="width: 20%;" type="radio" id="soloIda" name="tipoViaje" value="Solo ida">
+                                </div>
+                                
+                                <div style="margin-bottom: 10%; display: flex; justify-content: space-between;">
+                                    <label for="idaVuelta" style="margin-right: 5%; color: black;">Ida y vuelta</label>
+                                    <input style="width: 20%;" type="radio" id="idaVuelta" name="tipoViaje" checked value="Ida y vuelta">
+                                </div>
+                            </section>
+                    
+                            <button style="width: 100%; background-color: rgb(237, 22, 80); color: white; padding: 5%; border-radius: 10px; border-style: none; font-size: large;" onclick="confirmarTipoViajes()">Confirmar</button>
+                        </div>
+
+                        <script>
+                            function confirmarTipoViajes() {
+        var tipoSeleccionado = '';
+        
+        // Obtener el valor del radio button seleccionado
+        var radios = document.getElementsByName('tipoViaje');
+        for (var i = 0; i < radios.length; i++) {
+            if (radios[i].checked) {
+                tipoSeleccionado = radios[i].value;
+                break;
+            }
+        }
+
+        // Actualizar el texto del span "Ida y Vuelta"
+        var spanIdaVuelta = document.querySelector('span[onclick="mostrarContenidos(\'contenidoIdaVuelta\')"]');
+        if (spanIdaVuelta) {
+            spanIdaVuelta.textContent = tipoSeleccionado;
+        }
+
+        // Cerrar la ventana deslizante
+        cerrarVentanas();
+    }
+</script>
+                      
+                      
+<div id="contenidoEconomy" style="display: none; padding: 8%;">
+    <h2 style="margin-bottom: 12%;">Tipo de Cabina</h2>
+
+    <section style="margin-bottom: 5%;">
+        <div style="margin-bottom: 8%; display: flex; justify-content: space-between;">
+            <label for="economy" style="margin-right: 5%; color: black;">Economy</label>
+            <input name="tipoCabina" style="width: 20%;" type="radio" id="economy" checked value="Economy">
+        </div>
+        
+        <div style="margin-bottom: 10%; display: flex; justify-content: space-between;">
+            <label for="premiumEconomy" style="margin-right: 5%; color: black;">Premium Economy</label>
+            <input name="tipoCabina" style="width: 20%;" type="radio" id="premiumEconomy" value="Premium Economy">
+        </div>
+
+        <div style="margin-bottom: 10%; display: flex; justify-content: space-between;">
+            <label for="premiumBusiness" style="margin-right: 5%; color: black;">Premium Business</label>
+            <input name="tipoCabina" style="width: 20%;" type="radio" id="premiumBusiness" value="Premium Business">
+        </div>
+    </section>
+
+    <button style="width: 100%; background-color: rgb(237, 22, 80); color: white; padding: 5%; border-radius: 10px; border-style: none; font-size: large;" onclick="confirmarTipoCabina()">Confirmar</button>
+</div>
+                    </div>
+
+
+                    
+                    <script>
+                        function confirmarTipoViaje() {
+                            var tipoSeleccionado = '';
+                    
+                            // Obtener el valor del radio button seleccionado
+                            var radios = document.getElementsByName('tipoCabina');
+                            for (var i = 0; i < radios.length; i++) {
+                                if (radios[i].checked) {
+                                    tipoSeleccionado = radios[i].value;
+                                    break;
+                                }
+                            }
+                    
+                            // Actualizar el texto del span "Economy"
+                            var spanEconomy = document.querySelector('span[onclick="mostrarContenidos(\'contenidoEconomy\')"]');
+                            if (spanEconomy) {
+                                spanEconomy.textContent = tipoSeleccionado;
+                            }
+                    
+                            // Cerrar la ventana deslizante
+                            cerrarVentanas();
+                        }
+                    
+                        function confirmarTipoCabina() {
+                            var tipoSeleccionado = '';
+                    
+                            // Obtener el valor del radio button seleccionado
+                            var radios = document.getElementsByName('tipoCabina');
+                            for (var i = 0; i < radios.length; i++) {
+                                if (radios[i].checked) {
+                                    tipoSeleccionado = radios[i].value;
+                                    break;
+                                }
+                            }
+                    
+                            // Actualizar el texto del span "Economy"
+                            var spanEconomy = document.querySelector('span[onclick="mostrarContenidos(\'contenidoEconomy\')"]');
+                            if (spanEconomy) {
+                                spanEconomy.textContent = tipoSeleccionado;
+                            }
+                    
+                            // Cerrar la ventana deslizante
+                            cerrarVentanas();
+                        }
+                    
+                        function mostrarContenidos(contenidoId) {
+                            var ventanaDeslizantess = document.getElementById('ventanaDeslizantess');
+                            var contenidoIdaVuelta = document.getElementById('contenidoIdaVuelta');
+                            var contenidoEconomy = document.getElementById('contenidoEconomy');
+                    
+                            contenidoIdaVuelta.style.display = 'none';
+                            contenidoEconomy.style.display = 'none';
+                    
+                            document.getElementById(contenidoId).style.display = 'block';
+                            ventanaDeslizantess.style.display = 'block';
+                    
+                            setTimeout(function() {
+                                ventanaDeslizantess.style.transform = 'translateX(0)';
+                            }, 10);
+                        }
+                    
+                        function cerrarVentanas() {
+                            var ventanaDeslizantess = document.getElementById('ventanaDeslizantess');
+                            ventanaDeslizantess.style.transform = 'translateX(100%)';
+                            setTimeout(function() {
+                                ventanaDeslizantess.style.display = 'none';
+                            }, 300); // Coincide con la duración de la transición
+                        }
+                    </script>
+                    
+                    
+                    <script>
+                        
+                        // Definición de las funciones en el contexto global
+                        function mostrarContenidos(contenidoId) {
+                            var ventanaDeslizantess = document.getElementById('ventanaDeslizantess');
+                            var contenidoIdaVuelta = document.getElementById('contenidoIdaVuelta');
+                            var contenidoEconomy = document.getElementById('contenidoEconomy');
+                    
+                            contenidoIdaVuelta.style.display = 'none';
+                            contenidoEconomy.style.display = 'none';
+                    
+                            document.getElementById(contenidoId).style.display = 'block';
+                            ventanaDeslizantess.style.display = 'block';
+                    
+                            setTimeout(function() {
+                                ventanaDeslizantess.style.transform = 'translateX(0)';
+                            }, 10);
+                        }
+                    
+                        function cerrarVentanas() {
+                            var ventanaDeslizantess = document.getElementById('ventanaDeslizantess');
+                            ventanaDeslizantess.style.transform = 'translateX(100%)';
+                            setTimeout(function() {
+                                ventanaDeslizantess.style.display = 'none';
+                            }, 300); // Coincide con la duración de la transición
+                        }
+                    </script>
+                    
+                </div>
+
+                <!-- SELECCION DE VUELOS -->
+
+                <style>
+                    /* Estilo para ocultar inicialmente la nueva sección */
+                    #nuevaSeccion {
+                        display: none;  
+                    }
+                </style>
+
+                <div>
+
+                    
+                    <div class="input-group">
+                        <img src="img/svgexport-12.png" alt="" style="margin-right: 4%;">
+                        <input type="text" id="origen" style="padding: 5%;" autocomplete="off" placeholder="Origen">
+                    </div>
+                
+                    <div class="input-group">
+                        <img src="img/svgexport-13.svg" style="margin-right: 4%;" alt="">
+                        <input type="text" id="destino" style="padding: 5%;" autocomplete="off" placeholder="Destino">
+                    </div>
+                
+                    <div id="nuevaSeccion">
+                        <style>
+                            .dual-date-container {
+                              background: white;
+                              padding: 0px;
+                              border-radius: 8px;
+                             
+                            }
+                            
+                            .date-picker-group {
+                              flex: 1;
+                              position: relative;
+                              display: flex;
+                              align-items: center;
+                            }
+                            
+                            .calendar-icon {
+                              width: 24px;
+                              height: 24px;
+                              margin-right: 12px;
+                            }
+                            
+                            .date-input {
+                              background: transparent;
+                              border: none;
+                              padding: 8px;
+                              width: 100%;
+                              font-size: 16px;
+                              color: #333;
+                              cursor: pointer;
+                            }
+                            
+                            .date-input::-webkit-calendar-picker-indicator {
+                              opacity: 0;
+                              position: absolute;
+                              right: 0;
+                              z-index: 1;
+                              cursor: pointer;
+                              width: 100%;
+                              height: 100%;
+                            }
+                            
+                            .date-separator {
+                              color: #666;
+                              font-weight: bold;
+                            }
+                            
+                            /* Ocultar calendario nativo en Firefox */
+                            @-moz-document url-prefix() {
+                              .date-input {
+                                width: calc(100% - 30px);
+                              }
+                            }
+                            </style>
+                            
+                            
+                            <div class="dual-date-container">
+                              <div class="date-picker-group">
+                                <img src="img/calender-14.png" class="calendar-icon" alt="Calendario">
+                               <div style="border: solid;
+                               border-width: 2px;
+                               border-color: gainsboro;
+                               width: 100%;
+                               border-radius: 5px;
+                               display: flex;
+                               padding: 2%;
+                               justify-content: start;" >
+                                <input 
+                                type="date" 
+                                class="date-input" 
+                                id="startDate"
+                                aria-label="Fecha de salida"
+                                placeholder="Fecha de ida"
+                              >
+                               </div>
+                              </div>
+                              
+                              <span class="date-separator">→</span>
+                              
+                              <div class="date-picker-group">
+                                <img src="img/calender-14.png" class="calendar-icon" alt="Calendario">
+                                <div  style="border: solid;
+                                border-width: 2px;
+                                border-color: gainsboro;
+                                width: 100%;
+                                border-radius: 5px;
+                                display: flex;
+                                padding: 2%;
+                                justify-content: start;" >
+                                    <input 
+                                  type="date" 
+                                  class="date-input" 
+                                  id="endDate"
+                                  aria-label="Fecha de regreso"
+                                  placeholder="Fecha de vuelta"
+                                  disabled
+                                >
+                                </div>
+                              </div>
+                            </div>
+
+                           
+                            
+                            <script>
+                            const startDate = document.getElementById('startDate');
+                            const endDate = document.getElementById('endDate');
+                            
+                            startDate.addEventListener('change', () => {
+                              if(startDate.value) {
+                                endDate.disabled = false;
+                                endDate.min = startDate.value;
+                              }
+                            });
+                            
+                            endDate.addEventListener('change', () => {
+                              if(endDate.value < startDate.value) {
+                                endDate.value = '';
+                                alert('La fecha de vuelta no puede ser anterior a la de ida');
+                              }
+                            });
+                            </script>
+                
+                        <div class="input-group" style="margin-top: 5%; border-style: solid; border-width: 0px 0px 2px 0px; border-color: gainsboro; padding-bottom: 8%;">
+                            <img src="img/perso-15.png" style="margin-right: 4%;" alt="">
+                            <input type="number" maxlength="6" id="perso" style="padding: 5%;" autocomplete="off" placeholder="Personas">
+                        </div>
+
+                        <button onclick="guardarYRedirigir()" style="background-color: #e51d45; display: flex; justify-content: center; color: white; padding: 17px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; margin-top: 8%; width: 100%;">Buscar vuelos</button>
+
+    </div>
+
+</div>
+
+        
+    <script>
+          function obtenerSegundaPalabra(texto) {
+        var palabras = texto.split(' ');
+        return palabras.length > 1 ? palabras[1] : '';
+    }
+
+    function cambiarTipoViaje() {
+        var tipoViajeElem = document.getElementById('tipoViaje');
+        if (tipoViajeElem.textContent.trim() === 'Ida y Vuelta') {
+            tipoViajeElem.textContent = 'Solo Ida';
+        } else {
+            tipoViajeElem.textContent = 'Ida y Vuelta';
+        }
+    }
+
+    function guardarYRedirigir() {
+        // Obtener los valores de origen y destino
+        var origenInput = document.getElementById('origen').value.trim();
+        var destinoInput = document.getElementById('destino').value.trim();
+
+        // Obtener la segunda palabra de origen y destino
+        var origen = obtenerSegundaPalabra(origenInput);
+        var destino = obtenerSegundaPalabra(destinoInput);
+
+        // Obtener los valores de fecha y personas
+        var fecha = document.getElementById('startDate').value;
+        var fecha = document.getElementById('endDate').value;
+        var personas = document.getElementById('perso').value;
+
+        // Guardar los valores en sessionStorage para pasar a la página 2
+        sessionStorage.setItem('origen', origen);
+        sessionStorage.setItem('destino', destino);
+        sessionStorage.setItem('fecha', fecha);
+        sessionStorage.setItem('personas', personas);
+
+        // Obtener el texto del span que indica el tipo de viaje
+        var tipoViajeElem = document.getElementById('tipoViaje');
+        if (tipoViajeElem) {
+            var tipoViaje = tipoViajeElem.textContent.trim();
+            // Redirigir basado en el tipo de viaje
+            if (tipoViaje === 'Ida y Vuelta') {
+                window.location.href = 'vuelos2.html';
+            } else if (tipoViaje === 'Solo Ida') {
+                window.location.href = 'vuelos.html';
+            }
+        } else {
+            console.error('No se encontró el elemento con id="tipoViaje"');
+        }
+    }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const origenInput = document.getElementById('origen');
+            const destinoInput = document.getElementById('destino');
+            const nuevaSeccion = document.getElementById('nuevaSeccion');
+
+            function origenLleno() {
+                return origenInput.value.trim() !== '';
+            }
+
+            function mostrarNuevaSeccion() {
+                if (origenLleno()) {
+                    nuevaSeccion.style.display = 'block';
+                } else {
+                    nuevaSeccion.style.display = 'none';
+                }
+            }
+
+            destinoInput.addEventListener('click', function() {
+                mostrarNuevaSeccion();
+            });
+
+            origenInput.addEventListener('input', function() {
+                mostrarNuevaSeccion();
+            });
+
+            mostrarNuevaSeccion();
+        });
+    </script>
+
+                
+                <div id="ventanaDeslizante" style="display: none; position: fixed; top: 0; right: 0; width: 100%; height: 100%; background-color: white; z-index: 9999; transform: translateX(100%); transition: transform 0.3s ease;">
+                    <div id="contenidoHola" style="display: none; height: 100%;" >
+                        
+                            <div class="container" style="background-color: white; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); padding: 20px; width: 100%; height: 100%; box-sizing: border-box;">
+                                <span class="close" style="float: right; font-size: 24px; color: #333; cursor: pointer;">&times;</span>
+                                <p style=" font-size: 18px; margin: 8% 0 20px; color: rgb(31, 3, 103);">Ingresa tu origen</p>
+                                <input autocomplete="off" type="text" style="width:100%;
+                                padding: 5%;
+                                border: 2px solid rgb(31, 3, 103);;
+                                border-radius: 5px;
+                                font-size: 16px;" id="origin-input" placeholder="Origen">
+
+                                <ul id="autocomplete-list" style="margin-bottom: 100%; list-style-type: none; padding: 20% 4% 8% 4%; " class="autocomplete-list"></ul>
+
+                                <button style="background-color: #e51d45;
+                               display: flex;
+                               justify-content: center;
+                                color: white;
+                                padding: 17px;
+                                border: none;
+                                border-radius: 5px;
+                                font-size: 16px;
+                                cursor: pointer;
+                                width: 100%;" id="cerrarVentana" class="button">Continuar</button>
+                            </div>
+                        
+                            <script>
+                            const cities = [
+    // Colombia
+    { name: 'Bogotá, BOG - Colombia', airport: 'El Dorado International Airport (BOG)', img: 'img/svgexport-46.png' },
+    { name: 'Medellín, MDE - Colombia', airport: 'José María Córdova International Airport (MDE)', img: 'img/svgexport-46.png' },
+    { name: 'Medellín, EOH - Colombia', airport: 'Olaya Herrera Airport (EOH)', img: 'img/svgexport-46.png' },
+    { name: 'Cali, CLO - Colombia', airport: 'Alfonso Bonilla Aragón International Airport (CLO)', img: 'img/svgexport-46.png' },
+    { name: 'Cartagena, CTG - Colombia', airport: 'Rafael Núñez International Airport (CTG)', img: 'img/svgexport-46.png' },
+    { name: 'Barranquilla, BAQ - Colombia', airport: 'Ernesto Cortissoz International Airport (BAQ)', img: 'img/svgexport-46.png' },
+    { name: 'Bucaramanga, BGA - Colombia', airport: 'Palonegro International Airport (BGA)', img: 'img/svgexport-46.png' },
+    { name: 'Pereira, PEI - Colombia', airport: 'Matecaña International Airport (PEI)', img: 'img/svgexport-46.png' },
+    { name: 'Santa Marta, SMR - Colombia', airport: 'Simón Bolívar International Airport (SMR)', img: 'img/svgexport-46.png' },
+    { name: 'Cúcuta, CUC - Colombia', airport: 'Camilo Daza International Airport (CUC)', img: 'img/svgexport-46.png' },
+    { name: 'Ibagué, IBE - Colombia', airport: 'Perales Airport (IBE)', img: 'img/svgexport-46.png' },
+    { name: 'Armenia, AXM - Colombia', airport: 'El Edén International Airport (AXM)', img: 'img/svgexport-46.png' },
+    { name: 'Neiva, NVA - Colombia', airport: 'Benito Salas Airport (NVA)', img: 'img/svgexport-46.png' },
+    { name: 'Manizales, MZL - Colombia', airport: 'La Nubia Airport (MZL)', img: 'img/svgexport-46.png' },
+    { name: 'Popayán, PPN - Colombia', airport: 'Guillermo León Valencia Airport (PPN)', img: 'img/svgexport-46.png' },
+    { name: 'Pasto, PSO - Colombia', airport: 'Antonio Nariño Airport (PSO)', img: 'img/svgexport-46.png' },
+    { name: 'San Andrés, ADZ - Colombia', airport: 'Gustavo Rojas Pinilla International Airport (ADZ)', img: 'img/svgexport-46.png' },
+    { name: 'Montería, MTR - Colombia', airport: 'Los Garzones Airport (MTR)', img: 'img/svgexport-46.png' },
+    { name: 'Valledupar, VUP - Colombia', airport: 'Alfonso López Pumarejo Airport (VUP)', img: 'img/svgexport-46.png' },
+    { name: 'Villavicencio, VVC - Colombia', airport: 'Vanguardia Airport (VVC)', img: 'img/svgexport-46.png' },
+    { name: 'Riohacha, RCH - Colombia', airport: 'Almirante Padilla Airport (RCH)', img: 'img/svgexport-46.png' },
+    { name: 'Leticia, LET - Colombia', airport: 'Alfredo Vásquez Cobo International Airport (LET)', img: 'img/svgexport-46.png' },
+    { name: 'Yopal, EYP - Colombia', airport: 'El Alcaraván Airport (EYP)', img: 'img/svgexport-46.png' },
+    { name: 'Quibdó, UIB - Colombia', airport: 'El Caraño Airport (UIB)', img: 'img/svgexport-46.png' },
+    { name: 'Tumaco, TCO - Colombia', airport: 'La Florida Airport (TCO)', img: 'img/svgexport-46.png' },
+    { name: 'Arauca, AUC - Colombia', airport: 'Santiago Pérez Quiroz Airport (AUC)', img: 'img/svgexport-46.png' },
+    { name: 'Buenaventura, BUN - Colombia', airport: 'Gerardo Tobar López Airport (BUN)', img: 'img/svgexport-46.png' },
+    { name: 'Florencia, FLA - Colombia', airport: 'Gustavo Artunduaga Paredes Airport (FLA)', img: 'img/svgexport-46.png' },
+    { name: 'Guapi, GPI - Colombia', airport: 'Juan Casiano Airport (GPI)', img: 'img/svgexport-46.png' },
+    { name: 'Inírida, PDA - Colombia', airport: 'César Gaviria Trujillo Airport (PDA)', img: 'img/svgexport-46.png' },
+    { name: 'Ipiales, IPI - Colombia', airport: 'San Luis Airport (IPI)', img: 'img/svgexport-46.png' },
+    { name: 'La Macarena, LMC - Colombia', airport: 'La Macarena Airport (LMC)', img: 'img/svgexport-46.png' },
+    { name: 'La Pedrera, LPD - Colombia', airport: 'La Pedrera Airport (LPD)', img: 'img/svgexport-46.png' },
+    { name: 'Mitú, MVP - Colombia', airport: 'Fabio Alberto León Bentley Airport (MVP)', img: 'img/svgexport-46.png' },
+    { name: 'Mompox, MMP - Colombia', airport: 'San Bernardo Airport (MMP)', img: 'img/svgexport-46.png' },
+    { name: 'Nuquí, NQU - Colombia', airport: 'Reyes Murillo Airport (NQU)', img: 'img/svgexport-46.png' },
+    { name: 'Puerto Asís, PUU - Colombia', airport: 'Tres de Mayo Airport (PUU)', img: 'img/svgexport-46.png' },
+    { name: 'San Vicente del Caguán, SVI - Colombia', airport: 'Eduardo Falla Solano Airport (SVI)', img: 'img/svgexport-46.png' },
+    { name: 'Tame, TME - Colombia', airport: 'Gabriel Vargas Santos Airport (TME)', img: 'img/svgexport-46.png' },
+    { name: 'Tolú, TLU - Colombia', airport: 'Golfo de Morrosquillo Airport (TLU)', img: 'img/svgexport-46.png' },
+    
+    // Ecuador
+    { name: 'Quito, UIO - Ecuador', airport: 'Aeropuerto Internacional Mariscal Sucre (UIO)', img: 'img/svgexport-46.png' },
+    { name: 'Guayaquil, GYE - Ecuador', airport: 'Aeropuerto Internacional José Joaquín de Olmedo (GYE)', img: 'img/svgexport-46.png' },
+    { name: 'Manta, MEC - Ecuador', airport: 'Aeropuerto Internacional Eloy Alfaro (MEC)', img: 'img/svgexport-46.png' },
+    { name: 'Cuenca, CUE - Ecuador', airport: 'Aeropuerto Mariscal Lamar (CUE)', img: 'img/svgexport-46.png' },
+    { name: 'Latacunga, LTX - Ecuador', airport: 'Aeropuerto Internacional Cotopaxi (LTX)', img: 'img/svgexport-46.png' },
+    { name: 'Santa Rosa, ETR - Ecuador', airport: 'Aeropuerto Internacional de Santa Rosa (ETR)', img: 'img/svgexport-46.png' },
+    { name: 'Esmeraldas, ESM - Ecuador', airport: 'Aeropuerto Coronel Carlos Concha Torres (ESM)', img: 'img/svgexport-46.png' },
+    { name: 'Tulcán, TUA - Ecuador', airport: 'Aeropuerto Teniente Coronel Luis A. Mantilla (TUA)', img: 'img/svgexport-46.png' },
+    { name: 'Baltra, GPS - Ecuador', airport: 'Aeropuerto Seymour (GPS)', img: 'img/svgexport-46.png' },
+    { name: 'San Cristóbal, SCY - Ecuador', airport: 'Aeropuerto de San Cristóbal (SCY)', img: 'img/svgexport-46.png' },
+    { name: 'Salinas, SNC - Ecuador', airport: 'Aeropuerto General Ulpiano Páez (SNC)', img: 'img/svgexport-46.png' },
+    { name: 'Loja, LOH - Ecuador', airport: 'Aeropuerto Ciudad de Catamayo (LOH)', img: 'img/svgexport-46.png' },
+    { name: 'Coca, OCC - Ecuador', airport: 'Aeropuerto Francisco de Orellana (OCC)', img: 'img/svgexport-46.png' },
+    { name: 'Macas, XMS - Ecuador', airport: 'Aeropuerto Coronel Edmundo Carvajal (XMS)', img: 'img/svgexport-46.png' },
+    { name: 'Lago Agrio, LGQ - Ecuador', airport: 'Aeropuerto de Nueva Loja (LGQ)', img: 'img/svgexport-46.png' },
+    { name: 'Tena, TNW - Ecuador', airport: 'Aeropuerto Jumandy (TNW)', img: 'img/svgexport-46.png' },
+    { name: 'Shell, PTZ - Ecuador', airport: 'Aeropuerto Río Amazonas (PTZ)', img: 'img/svgexport-46.png' },
+    { name: 'Taisha, TSC - Ecuador', airport: 'Aeropuerto de Taisha (TSC)', img: 'img/svgexport-46.png' },
+    { name: 'Riobamba, RIO - Ecuador', airport: 'Aeropuerto Chimborazo (RIO)', img: 'img/svgexport-46.png' },
+    { name: 'Ambato, ATF - Ecuador', airport: 'Aeropuerto Chachoan (ATF)', img: 'img/svgexport-46.png' },
+    { name: 'Bahía de Caráquez, BHA - Ecuador', airport: 'Aeropuerto Los Perales (BHA)', img: 'img/svgexport-46.png' },
+    { name: 'Macará, MRR - Ecuador', airport: 'Aeropuerto José María Velasco Ibarra (MRR)', img: 'img/svgexport-46.png' },
+    { name: 'Machala, MCH - Ecuador', airport: 'Aeropuerto General Manuel Serrano (MCH)', img: 'img/svgexport-46.png' },
+    { name: 'Portoviejo, PVO - Ecuador', airport: 'Aeropuerto Reales Tamarindos (PVO)', img: 'img/svgexport-46.png' },
+    { name: 'Sucúa, SUQ - Ecuador', airport: 'Aeropuerto de Sucúa (SUQ)', img: 'img/svgexport-46.png' },
+    { name: 'Tarapoa, TPC - Ecuador', airport: 'Aeropuerto de Tarapoa (TPC)', img: 'img/svgexport-46.png' },
+    { name: 'Tiputini, TPN - Ecuador', airport: 'Aeropuerto de Tiputini (TPN)', img: 'img/svgexport-46.png' },
+    { name: 'Putumayo, PYO - Ecuador', airport: 'Aeropuerto de Putumayo (PYO)', img: 'img/svgexport-46.png' },
+    { name: 'Jipijapa, JIP - Ecuador', airport: 'Aeropuerto de Jipijapa (JIP)', img: 'img/svgexport-46.png' },
+    { name: 'Pedernales, PDZ - Ecuador', airport: 'Aeropuerto de Pedernales (PDZ)', img: 'img/svgexport-46.png' },
+    { name: 'Santa Cecilia, WSE - Ecuador', airport: 'Aeropuerto de Santa Cecilia (WSE)', img: 'img/svgexport-46.png' },
+    { name: 'Taura, TAU - Ecuador', airport: 'Base Aérea de Taura (TAU)', img: 'img/svgexport-46.png' },
+    
+    // Chile
+    { name: 'Santiago, SCL - Chile', airport: 'Aeropuerto Internacional Comodoro Arturo Merino Benítez (SCL)', img: 'img/svgexport-46.png' },
+    { name: 'Arica, ARI - Chile', airport: 'Aeropuerto Internacional Chacalluta (ARI)', img: 'img/svgexport-46.png' },
+    { name: 'Iquique, IQQ - Chile', airport: 'Aeropuerto Internacional Diego Aracena (IQQ)', img: 'img/svgexport-46.png' },
+    { name: 'Antofagasta, ANF - Chile', airport: 'Aeropuerto Internacional Andrés Sabella Gálvez (ANF)', img: 'img/svgexport-46.png' },
+    { name: 'Calama, CJC - Chile', airport: 'Aeropuerto El Loa (CJC)', img: 'img/svgexport-46.png' },
+    { name: 'Copiapó, CPO - Chile', airport: 'Aeropuerto Desierto de Atacama (CPO)', img: 'img/svgexport-46.png' },
+    { name: 'La Serena, LSC - Chile', airport: 'Aeropuerto La Florida (LSC)', img: 'img/svgexport-46.png' },
+    { name: 'Valparaíso, VAP - Chile', airport: 'Aeropuerto Rodelillo (VAP)', img: 'img/svgexport-46.png' },
+    { name: 'Rancagua, ULC - Chile', airport: 'Aeródromo de La Independencia (ULC)', img: 'img/svgexport-46.png' },
+    { name: 'Curicó, UCU - Chile', airport: 'Aeródromo General Freire (UCU)', img: 'img/svgexport-46.png' },
+    { name: 'Talca, TLC - Chile', airport: 'Aeródromo Panguilemo (TLC)', img: 'img/svgexport-46.png' },
+    { name: 'Chillán, YAI - Chile', airport: 'Aeródromo Bernardo O\'Higgins (YAI)', img: 'img/svgexport-46.png' },
+    { name: 'Concepción, CCP - Chile', airport: 'Aeropuerto Internacional Carriel Sur (CCP)', img: 'img/svgexport-46.png' },
+    { name: 'Los Ángeles, LSQ - Chile', airport: 'Aeródromo María Dolores (LSQ)', img: 'img/svgexport-46.png' },
+    { name: 'Temuco, ZCO - Chile', airport: 'Aeropuerto Internacional Araucanía (ZCO)', img: 'img/svgexport-46.png' },
+    { name: 'Valdivia, ZAL - Chile', airport: 'Aeródromo Pichoy (ZAL)', img: 'img/svgexport-46.png' },
+    { name: 'Osorno, ZOS - Chile', airport: 'Aeródromo Cañal Bajo Carlos Hott Siebert (ZOS)', img: 'img/svgexport-46.png' },
+    { name: 'Puerto Montt, PMC - Chile', airport: 'Aeropuerto El Tepual (PMC)', img: 'img/svgexport-46.png' },
+    { name: 'Castro, WCA - Chile', airport: 'Aeródromo de Mocopulli (WCA)', img: 'img/svgexport-46.png' },
+    { name: 'Chaitén, WCH - Chile', airport: 'Aeródromo de Chaitén (WCH)', img: 'img/svgexport-46.png' },
+    { name: 'Coyhaique, GXQ - Chile', airport: 'Aeropuerto Teniente Vidal (GXQ)', img: 'img/svgexport-46.png' },
+    { name: 'Balmaceda, BBA - Chile', airport: 'Aeropuerto de Balmaceda (BBA)', img: 'img/svgexport-46.png' },
+    { name: 'Puerto Aysén, WPA - Chile', airport: 'Aeródromo de Puerto Aysén (WPA)', img: 'img/svgexport-46.png' },
+    { name: 'Villa O\'Higgins, VGN - Chile', airport: 'Aeródromo Villa O\'Higgins (VGN)', img: 'img/svgexport-46.png' },
+    { name: 'Punta Arenas, PUQ - Chile', airport: 'Aeropuerto Internacional Presidente Carlos Ibáñez del Campo (PUQ)', img: 'img/svgexport-46.png' },
+    { name: 'Puerto Williams, WPU - Chile', airport: 'Aeródromo Guardiamarina Zañartu (WPU)', img: 'img/svgexport-46.png' },
+    { name: 'Porvenir, WPV - Chile', airport: 'Aeródromo de Porvenir (WPV)', img: 'img/svgexport-46.png' },
+    { name: 'Hanga Roa, IPC - Chile', airport: 'Aeropuerto Internacional Mataveri (IPC)', img: 'img/svgexport-46.png' },
+    { name: 'Juan Fernández, JFR - Chile', airport: 'Aeródromo de Juan Fernández (JFR)', img: 'img/svgexport-46.png' },
+    { name: 'Isla de Pascua, IPC - Chile', airport: 'Aeropuerto Internacional Mataveri (IPC)', img: 'img/svgexport-46.png' },
+    { name: 'Viña del Mar, KNA - Chile', airport: 'Aeródromo de Viña del Mar (KNA)', img: 'img/svgexport-46.png' },
+    { name: 'Melipilla, WML - Chile', airport: 'Aeródromo de Melipilla (WML)', img: 'img/svgexport-46.png' },
+    { name: 'San Fernando, UNO - Chile', airport: 'Aeródromo de San Fernando (UNO)', img: 'img/svgexport-46.png' },
+    { name: 'Linares, LIN - Chile', airport: 'Aeródromo de Linares (LIN)', img: 'img/svgexport-46.png' },
+    { name: 'Angol, GEL - Chile', airport: 'Aeródromo Los Confines (GEL)', img: 'img/svgexport-46.png' },
+    { name: 'Victoria, ZIC - Chile', airport: 'Aeródromo de Victoria (ZIC)', img: 'img/svgexport-46.png' },
+    { name: 'Pucón, ZPC - Chile', airport: 'Aeródromo de Pucón (ZPC)', img: 'img/svgexport-46.png' },
+    { name: 'La Unión, ZUN - Chile', airport: 'Aeródromo de La Unión (ZUN)', img: 'img/svgexport-46.png' },
+    { name: 'Ancud, WCU - Chile', airport: 'Aeródromo de Ancud (WCU)', img: 'img/svgexport-46.png' },
+    { name: 'Quellón, WQL - Chile', airport: 'Aeródromo de Quellón (WQL)', img: 'img/svgexport-46.png' },
+    { name: 'Futaleufú, FFU - Chile', airport: 'Aeródromo de Futaleufú (FFU)', img: 'img/svgexport-46.png' },
+    { name: 'Puerto Natales, PNT - Chile', airport: 'Aeródromo Teniente Julio Gallardo (PNT)', img: 'img/svgexport-46.png' },
+    { name: 'El Calafate, FTE - Chile', airport: 'Aeródromo de Puerto Edén (FTE)', img: 'img/svgexport-46.png' },
+    { name: 'Cochrane, LGR - Chile', airport: 'Aeródromo de Cochrane (LGR)', img: 'img/svgexport-46.png' }
+];
+                            
+                                
+                            
+                                document.querySelector('.button').addEventListener('click', function() {
+                                    const originInputValue = document.getElementById('origin-input').value;
+                                    if (originInputValue.trim() !== '') {
+                                        document.getElementById('origen').value = originInputValue;
+                                        // Cerrar la ventana modal aquí (código para cerrar la ventana modal)
+                                    }
+                                });
+                            
+                                document.getElementById('origin-input').addEventListener('input', function() {
+                                    const input = this.value.toLowerCase();
+                                    const list = document.getElementById('autocomplete-list');
+                                    list.innerHTML = '';
+                                    
+                                    if (input) {
+                                        const filteredCities = cities.filter(city => 
+                                            city.name.toLowerCase().includes(input) ||
+                                            city.airport.toLowerCase().includes(input)
+                                        );
+                                        
+                                        filteredCities.forEach(city => {
+                                            const listItem = document.createElement('li');
+                            
+                                            const cityImage = document.createElement('img');
+                                            cityImage.src = city.img;
+                                            cityImage.alt = city.name;
+                            
+                                            const cityText = document.createElement('span');
+                                            cityText.textContent = `${city.name} - ${city.airport}`;
+                            
+                                            listItem.appendChild(cityImage);
+                                            listItem.appendChild(cityText);
+                            
+                                            listItem.addEventListener('click', function() {
+                                                document.getElementById('origin-input').value = city.name;
+                                                list.innerHTML = '';
+                                            });
+                            
+                                            list.appendChild(listItem);
+                                        });
+                                    }
+                                });
+                            </script>
+                            
+                       
+                    </div>
+
+
+                  <!-- PARTE DE LA VENTANA DESLIZANTE (DESTINO) -->
+
+                    
+                    <div id="contenidoChao" style="display: none; height: 100%;">
+                        <div class="container" style="background-color: white; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); padding: 20px; width: 100%; height: 100%; box-sizing: border-box;">
+                            <span class="close" style="float: right; font-size: 24px; color: #333; cursor: pointer;">&times;</span>
+                            <p style=" font-size: 18px; margin: 8% 0 20px; color: rgb(31, 3, 103);">¿A dónde quires ir?</p>
+                            <input autocomplete="off"  type="text" style="width:100%;
+                            padding: 5%;
+                            border: 2px solid rgb(31, 3, 103);
+                            border-radius: 5px;
+                            font-size: 16px;" id="origin-inputs" placeholder="Destino">
+
+                            <ul id="autocomplete-lists" style="margin-bottom: 100%; list-style-type: none; padding: 18% 4% 8% 4%; " class="autocomplete-list"></ul>
+
+                            <button style="background-color: #e51d45;
+                            display: flex;
+                               justify-content: center;
+                                color: white;
+                                padding: 17px;
+                                border: none;
+                                border-radius: 5px;
+                                font-size: 16px;
+                                cursor: pointer;
+                                text-align: center;
+                                width: 100%;" id="cerrarVentanas" class="buttons">Continuar</button>
+                            </div>
+                        </div>
+                    
+                        <script>
+                        const citiess = [
+    // Colombia
+    { name: 'Bogotá, BOG - Colombia', airport: 'El Dorado International Airport (BOG)', img: 'img/svgexport-46.png' },
+    { name: 'Medellín, MDE - Colombia', airport: 'José María Córdova International Airport (MDE)', img: 'img/svgexport-46.png' },
+    { name: 'Medellín, EOH - Colombia', airport: 'Olaya Herrera Airport (EOH)', img: 'img/svgexport-46.png' },
+    { name: 'Cali, CLO - Colombia', airport: 'Alfonso Bonilla Aragón International Airport (CLO)', img: 'img/svgexport-46.png' },
+    { name: 'Cartagena, CTG - Colombia', airport: 'Rafael Núñez International Airport (CTG)', img: 'img/svgexport-46.png' },
+    { name: 'Barranquilla, BAQ - Colombia', airport: 'Ernesto Cortissoz International Airport (BAQ)', img: 'img/svgexport-46.png' },
+    { name: 'Bucaramanga, BGA - Colombia', airport: 'Palonegro International Airport (BGA)', img: 'img/svgexport-46.png' },
+    { name: 'Pereira, PEI - Colombia', airport: 'Matecaña International Airport (PEI)', img: 'img/svgexport-46.png' },
+    { name: 'Santa Marta, SMR - Colombia', airport: 'Simón Bolívar International Airport (SMR)', img: 'img/svgexport-46.png' },
+    { name: 'Cúcuta, CUC - Colombia', airport: 'Camilo Daza International Airport (CUC)', img: 'img/svgexport-46.png' },
+    { name: 'Ibagué, IBE - Colombia', airport: 'Perales Airport (IBE)', img: 'img/svgexport-46.png' },
+    { name: 'Armenia, AXM - Colombia', airport: 'El Edén International Airport (AXM)', img: 'img/svgexport-46.png' },
+    { name: 'Neiva, NVA - Colombia', airport: 'Benito Salas Airport (NVA)', img: 'img/svgexport-46.png' },
+    { name: 'Manizales, MZL - Colombia', airport: 'La Nubia Airport (MZL)', img: 'img/svgexport-46.png' },
+    { name: 'Popayán, PPN - Colombia', airport: 'Guillermo León Valencia Airport (PPN)', img: 'img/svgexport-46.png' },
+    { name: 'Pasto, PSO - Colombia', airport: 'Antonio Nariño Airport (PSO)', img: 'img/svgexport-46.png' },
+    { name: 'San Andrés, ADZ - Colombia', airport: 'Gustavo Rojas Pinilla International Airport (ADZ)', img: 'img/svgexport-46.png' },
+    { name: 'Montería, MTR - Colombia', airport: 'Los Garzones Airport (MTR)', img: 'img/svgexport-46.png' },
+    { name: 'Valledupar, VUP - Colombia', airport: 'Alfonso López Pumarejo Airport (VUP)', img: 'img/svgexport-46.png' },
+    { name: 'Villavicencio, VVC - Colombia', airport: 'Vanguardia Airport (VVC)', img: 'img/svgexport-46.png' },
+    { name: 'Riohacha, RCH - Colombia', airport: 'Almirante Padilla Airport (RCH)', img: 'img/svgexport-46.png' },
+    { name: 'Leticia, LET - Colombia', airport: 'Alfredo Vásquez Cobo International Airport (LET)', img: 'img/svgexport-46.png' },
+    { name: 'Yopal, EYP - Colombia', airport: 'El Alcaraván Airport (EYP)', img: 'img/svgexport-46.png' },
+    { name: 'Quibdó, UIB - Colombia', airport: 'El Caraño Airport (UIB)', img: 'img/svgexport-46.png' },
+    { name: 'Tumaco, TCO - Colombia', airport: 'La Florida Airport (TCO)', img: 'img/svgexport-46.png' },
+    { name: 'Arauca, AUC - Colombia', airport: 'Santiago Pérez Quiroz Airport (AUC)', img: 'img/svgexport-46.png' },
+    { name: 'Buenaventura, BUN - Colombia', airport: 'Gerardo Tobar López Airport (BUN)', img: 'img/svgexport-46.png' },
+    { name: 'Florencia, FLA - Colombia', airport: 'Gustavo Artunduaga Paredes Airport (FLA)', img: 'img/svgexport-46.png' },
+    { name: 'Guapi, GPI - Colombia', airport: 'Juan Casiano Airport (GPI)', img: 'img/svgexport-46.png' },
+    { name: 'Inírida, PDA - Colombia', airport: 'César Gaviria Trujillo Airport (PDA)', img: 'img/svgexport-46.png' },
+    { name: 'Ipiales, IPI - Colombia', airport: 'San Luis Airport (IPI)', img: 'img/svgexport-46.png' },
+    { name: 'La Macarena, LMC - Colombia', airport: 'La Macarena Airport (LMC)', img: 'img/svgexport-46.png' },
+    { name: 'La Pedrera, LPD - Colombia', airport: 'La Pedrera Airport (LPD)', img: 'img/svgexport-46.png' },
+    { name: 'Mitú, MVP - Colombia', airport: 'Fabio Alberto León Bentley Airport (MVP)', img: 'img/svgexport-46.png' },
+    { name: 'Mompox, MMP - Colombia', airport: 'San Bernardo Airport (MMP)', img: 'img/svgexport-46.png' },
+    { name: 'Nuquí, NQU - Colombia', airport: 'Reyes Murillo Airport (NQU)', img: 'img/svgexport-46.png' },
+    { name: 'Puerto Asís, PUU - Colombia', airport: 'Tres de Mayo Airport (PUU)', img: 'img/svgexport-46.png' },
+    { name: 'San Vicente del Caguán, SVI - Colombia', airport: 'Eduardo Falla Solano Airport (SVI)', img: 'img/svgexport-46.png' },
+    { name: 'Tame, TME - Colombia', airport: 'Gabriel Vargas Santos Airport (TME)', img: 'img/svgexport-46.png' },
+    { name: 'Tolú, TLU - Colombia', airport: 'Golfo de Morrosquillo Airport (TLU)', img: 'img/svgexport-46.png' },
+    
+    // Ecuador
+    { name: 'Quito, UIO - Ecuador', airport: 'Aeropuerto Internacional Mariscal Sucre (UIO)', img: 'img/svgexport-46.png' },
+    { name: 'Guayaquil, GYE - Ecuador', airport: 'Aeropuerto Internacional José Joaquín de Olmedo (GYE)', img: 'img/svgexport-46.png' },
+    { name: 'Manta, MEC - Ecuador', airport: 'Aeropuerto Internacional Eloy Alfaro (MEC)', img: 'img/svgexport-46.png' },
+    { name: 'Cuenca, CUE - Ecuador', airport: 'Aeropuerto Mariscal Lamar (CUE)', img: 'img/svgexport-46.png' },
+    { name: 'Latacunga, LTX - Ecuador', airport: 'Aeropuerto Internacional Cotopaxi (LTX)', img: 'img/svgexport-46.png' },
+    { name: 'Santa Rosa, ETR - Ecuador', airport: 'Aeropuerto Internacional de Santa Rosa (ETR)', img: 'img/svgexport-46.png' },
+    { name: 'Esmeraldas, ESM - Ecuador', airport: 'Aeropuerto Coronel Carlos Concha Torres (ESM)', img: 'img/svgexport-46.png' },
+    { name: 'Tulcán, TUA - Ecuador', airport: 'Aeropuerto Teniente Coronel Luis A. Mantilla (TUA)', img: 'img/svgexport-46.png' },
+    { name: 'Baltra, GPS - Ecuador', airport: 'Aeropuerto Seymour (GPS)', img: 'img/svgexport-46.png' },
+    { name: 'San Cristóbal, SCY - Ecuador', airport: 'Aeropuerto de San Cristóbal (SCY)', img: 'img/svgexport-46.png' },
+    { name: 'Salinas, SNC - Ecuador', airport: 'Aeropuerto General Ulpiano Páez (SNC)', img: 'img/svgexport-46.png' },
+    { name: 'Loja, LOH - Ecuador', airport: 'Aeropuerto Ciudad de Catamayo (LOH)', img: 'img/svgexport-46.png' },
+    { name: 'Coca, OCC - Ecuador', airport: 'Aeropuerto Francisco de Orellana (OCC)', img: 'img/svgexport-46.png' },
+    { name: 'Macas, XMS - Ecuador', airport: 'Aeropuerto Coronel Edmundo Carvajal (XMS)', img: 'img/svgexport-46.png' },
+    { name: 'Lago Agrio, LGQ - Ecuador', airport: 'Aeropuerto de Nueva Loja (LGQ)', img: 'img/svgexport-46.png' },
+    { name: 'Tena, TNW - Ecuador', airport: 'Aeropuerto Jumandy (TNW)', img: 'img/svgexport-46.png' },
+    { name: 'Shell, PTZ - Ecuador', airport: 'Aeropuerto Río Amazonas (PTZ)', img: 'img/svgexport-46.png' },
+    { name: 'Taisha, TSC - Ecuador', airport: 'Aeropuerto de Taisha (TSC)', img: 'img/svgexport-46.png' },
+    { name: 'Riobamba, RIO - Ecuador', airport: 'Aeropuerto Chimborazo (RIO)', img: 'img/svgexport-46.png' },
+    { name: 'Ambato, ATF - Ecuador', airport: 'Aeropuerto Chachoan (ATF)', img: 'img/svgexport-46.png' },
+    { name: 'Bahía de Caráquez, BHA - Ecuador', airport: 'Aeropuerto Los Perales (BHA)', img: 'img/svgexport-46.png' },
+    { name: 'Macará, MRR - Ecuador', airport: 'Aeropuerto José María Velasco Ibarra (MRR)', img: 'img/svgexport-46.png' },
+    { name: 'Machala, MCH - Ecuador', airport: 'Aeropuerto General Manuel Serrano (MCH)', img: 'img/svgexport-46.png' },
+    { name: 'Portoviejo, PVO - Ecuador', airport: 'Aeropuerto Reales Tamarindos (PVO)', img: 'img/svgexport-46.png' },
+    { name: 'Sucúa, SUQ - Ecuador', airport: 'Aeropuerto de Sucúa (SUQ)', img: 'img/svgexport-46.png' },
+    { name: 'Tarapoa, TPC - Ecuador', airport: 'Aeropuerto de Tarapoa (TPC)', img: 'img/svgexport-46.png' },
+    { name: 'Tiputini, TPN - Ecuador', airport: 'Aeropuerto de Tiputini (TPN)', img: 'img/svgexport-46.png' },
+    { name: 'Putumayo, PYO - Ecuador', airport: 'Aeropuerto de Putumayo (PYO)', img: 'img/svgexport-46.png' },
+    { name: 'Jipijapa, JIP - Ecuador', airport: 'Aeropuerto de Jipijapa (JIP)', img: 'img/svgexport-46.png' },
+    { name: 'Pedernales, PDZ - Ecuador', airport: 'Aeropuerto de Pedernales (PDZ)', img: 'img/svgexport-46.png' },
+    { name: 'Santa Cecilia, WSE - Ecuador', airport: 'Aeropuerto de Santa Cecilia (WSE)', img: 'img/svgexport-46.png' },
+    { name: 'Taura, TAU - Ecuador', airport: 'Base Aérea de Taura (TAU)', img: 'img/svgexport-46.png' },
+    
+    // Chile
+    { name: 'Santiago, SCL - Chile', airport: 'Aeropuerto Internacional Comodoro Arturo Merino Benítez (SCL)', img: 'img/svgexport-46.png' },
+    { name: 'Arica, ARI - Chile', airport: 'Aeropuerto Internacional Chacalluta (ARI)', img: 'img/svgexport-46.png' },
+    { name: 'Iquique, IQQ - Chile', airport: 'Aeropuerto Internacional Diego Aracena (IQQ)', img: 'img/svgexport-46.png' },
+    { name: 'Antofagasta, ANF - Chile', airport: 'Aeropuerto Internacional Andrés Sabella Gálvez (ANF)', img: 'img/svgexport-46.png' },
+    { name: 'Calama, CJC - Chile', airport: 'Aeropuerto El Loa (CJC)', img: 'img/svgexport-46.png' },
+    { name: 'Copiapó, CPO - Chile', airport: 'Aeropuerto Desierto de Atacama (CPO)', img: 'img/svgexport-46.png' },
+    { name: 'La Serena, LSC - Chile', airport: 'Aeropuerto La Florida (LSC)', img: 'img/svgexport-46.png' },
+    { name: 'Valparaíso, VAP - Chile', airport: 'Aeropuerto Rodelillo (VAP)', img: 'img/svgexport-46.png' },
+    { name: 'Rancagua, ULC - Chile', airport: 'Aeródromo de La Independencia (ULC)', img: 'img/svgexport-46.png' },
+    { name: 'Curicó, UCU - Chile', airport: 'Aeródromo General Freire (UCU)', img: 'img/svgexport-46.png' },
+    { name: 'Talca, TLC - Chile', airport: 'Aeródromo Panguilemo (TLC)', img: 'img/svgexport-46.png' },
+    { name: 'Chillán, YAI - Chile', airport: 'Aeródromo Bernardo O\'Higgins (YAI)', img: 'img/svgexport-46.png' },
+    { name: 'Concepción, CCP - Chile', airport: 'Aeropuerto Internacional Carriel Sur (CCP)', img: 'img/svgexport-46.png' },
+    { name: 'Los Ángeles, LSQ - Chile', airport: 'Aeródromo María Dolores (LSQ)', img: 'img/svgexport-46.png' },
+    { name: 'Temuco, ZCO - Chile', airport: 'Aeropuerto Internacional Araucanía (ZCO)', img: 'img/svgexport-46.png' },
+    { name: 'Valdivia, ZAL - Chile', airport: 'Aeródromo Pichoy (ZAL)', img: 'img/svgexport-46.png' },
+    { name: 'Osorno, ZOS - Chile', airport: 'Aeródromo Cañal Bajo Carlos Hott Siebert (ZOS)', img: 'img/svgexport-46.png' },
+    { name: 'Puerto Montt, PMC - Chile', airport: 'Aeropuerto El Tepual (PMC)', img: 'img/svgexport-46.png' },
+    { name: 'Castro, WCA - Chile', airport: 'Aeródromo de Mocopulli (WCA)', img: 'img/svgexport-46.png' },
+    { name: 'Chaitén, WCH - Chile', airport: 'Aeródromo de Chaitén (WCH)', img: 'img/svgexport-46.png' },
+    { name: 'Coyhaique, GXQ - Chile', airport: 'Aeropuerto Teniente Vidal (GXQ)', img: 'img/svgexport-46.png' },
+    { name: 'Balmaceda, BBA - Chile', airport: 'Aeropuerto de Balmaceda (BBA)', img: 'img/svgexport-46.png' },
+    { name: 'Puerto Aysén, WPA - Chile', airport: 'Aeródromo de Puerto Aysén (WPA)', img: 'img/svgexport-46.png' },
+    { name: 'Villa O\'Higgins, VGN - Chile', airport: 'Aeródromo Villa O\'Higgins (VGN)', img: 'img/svgexport-46.png' },
+    { name: 'Punta Arenas, PUQ - Chile', airport: 'Aeropuerto Internacional Presidente Carlos Ibáñez del Campo (PUQ)', img: 'img/svgexport-46.png' },
+    { name: 'Puerto Williams, WPU - Chile', airport: 'Aeródromo Guardiamarina Zañartu (WPU)', img: 'img/svgexport-46.png' },
+    { name: 'Porvenir, WPV - Chile', airport: 'Aeródromo de Porvenir (WPV)', img: 'img/svgexport-46.png' },
+    { name: 'Hanga Roa, IPC - Chile', airport: 'Aeropuerto Internacional Mataveri (IPC)', img: 'img/svgexport-46.png' },
+    { name: 'Juan Fernández, JFR - Chile', airport: 'Aeródromo de Juan Fernández (JFR)', img: 'img/svgexport-46.png' },
+    { name: 'Isla de Pascua, IPC - Chile', airport: 'Aeropuerto Internacional Mataveri (IPC)', img: 'img/svgexport-46.png' },
+    { name: 'Viña del Mar, KNA - Chile', airport: 'Aeródromo de Viña del Mar (KNA)', img: 'img/svgexport-46.png' },
+    { name: 'Melipilla, WML - Chile', airport: 'Aeródromo de Melipilla (WML)', img: 'img/svgexport-46.png' },
+    { name: 'San Fernando, UNO - Chile', airport: 'Aeródromo de San Fernando (UNO)', img: 'img/svgexport-46.png' },
+    { name: 'Linares, LIN - Chile', airport: 'Aeródromo de Linares (LIN)', img: 'img/svgexport-46.png' },
+    { name: 'Angol, GEL - Chile', airport: 'Aeródromo Los Confines (GEL)', img: 'img/svgexport-46.png' },
+    { name: 'Victoria, ZIC - Chile', airport: 'Aeródromo de Victoria (ZIC)', img: 'img/svgexport-46.png' },
+    { name: 'Pucón, ZPC - Chile', airport: 'Aeródromo de Pucón (ZPC)', img: 'img/svgexport-46.png' },
+    { name: 'La Unión, ZUN - Chile', airport: 'Aeródromo de La Unión (ZUN)', img: 'img/svgexport-46.png' },
+    { name: 'Ancud, WCU - Chile', airport: 'Aeródromo de Ancud (WCU)', img: 'img/svgexport-46.png' },
+    { name: 'Quellón, WQL - Chile', airport: 'Aeródromo de Quellón (WQL)', img: 'img/svgexport-46.png' },
+    { name: 'Futaleufú, FFU - Chile', airport: 'Aeródromo de Futaleufú (FFU)', img: 'img/svgexport-46.png' },
+    { name: 'Puerto Natales, PNT - Chile', airport: 'Aeródromo Teniente Julio Gallardo (PNT)', img: 'img/svgexport-46.png' },
+    { name: 'El Calafate, FTE - Chile', airport: 'Aeródromo de Puerto Edén (FTE)', img: 'img/svgexport-46.png' },
+    { name: 'Cochrane, LGR - Chile', airport: 'Aeródromo de Cochrane (LGR)', img: 'img/svgexport-46.png' }
+];
+                        
+                              
+                        
+                            // Event listener para el botón (simulado) para seleccionar destino
+                            document.querySelector('.buttons').addEventListener('click', function() {
+                                const originInputValue = document.getElementById('origin-inputs').value;
+                                if (originInputValue.trim() !== '') {
+                                    document.getElementById('destino').value = originInputValue;
+                                    // Aquí deberías cerrar la ventana modal, ej: $('#myModal').modal('hide');
+                                }
+                            });
+                        
+                            // Event listener para el input de origen para manejar autocompletado
+                            document.getElementById('origin-inputs').addEventListener('input', function() {
+                                const input = this.value.toLowerCase();
+                                const list = document.getElementById('autocomplete-lists');
+                                list.innerHTML = '';
+                        
+                                if (input) {
+                                    const filteredCitiess = citiess.filter(city => 
+                                        city.name.toLowerCase().includes(input) ||
+                                        city.airport.toLowerCase().includes(input)
+                                    );
+                        
+                                    filteredCitiess.forEach(city => {
+                                        const listItem = document.createElement('li');
+                        
+                                        const cityImage = document.createElement('img');
+                                        cityImage.src = city.img;
+                                        cityImage.alt = city.name;
+                        
+                                        const cityText = document.createElement('span');
+                                        cityText.textContent = `${city.name} - ${city.airport}`;
+                        
+                                        listItem.appendChild(cityImage);
+                                        listItem.appendChild(cityText);
+                        
+                                        listItem.addEventListener('click', function() {
+                                            document.getElementById('origin-inputs').value = city.name;
+                                            list.innerHTML = '';
+                                        });
+                        
+                                        list.appendChild(listItem);
+                                    });
+                                }
+                            });
+                        </script>
+                    </div>
+                    <button  style=" position: absolute; top: 20px; right: 20px; padding: 10px; background-color: transparent; color: white; border: none; cursor: pointer; "></button>
+                </div>
+                
+                <script>
+                    function mostrarVentanaDeslizante(contenidoId) {
+                        var ventanaDeslizante = document.getElementById('ventanaDeslizante');
+                        var contenidoHola = document.getElementById('contenidoHola');
+                        var contenidoChao = document.getElementById('contenidoChao');
+                        
+                        contenidoHola.style.display = 'none';
+                        contenidoChao.style.display = 'none';
+                        
+                        document.getElementById(contenidoId).style.display = 'block';
+                        ventanaDeslizante.style.display = 'block';
+                        
+                        setTimeout(function() {
+                            ventanaDeslizante.style.transform = 'translateX(0)';
+                        }, 10);
+                    }
+                
+                    document.getElementById('origen').addEventListener('click', function() {
+                        mostrarVentanaDeslizante('contenidoHola');
+                    });
+                
+                    document.getElementById('destino').addEventListener('click', function() {
+                        mostrarVentanaDeslizante('contenidoChao');
+                    });
+                
+                    document.getElementById('cerrarVentana').addEventListener('click', function() {
+                        var ventanaDeslizante = document.getElementById('ventanaDeslizante');
+                        ventanaDeslizante.style.transform = 'translateX(100%)';
+                        setTimeout(function() {
+                            ventanaDeslizante.style.display = 'none';
+                        }, 300); // Coincide con la duración de la transición
+                    });
+
+                    document.getElementById('cerrarVentanas').addEventListener('click', function() {
+                        var ventanaDeslizante = document.getElementById('ventanaDeslizante');
+                        ventanaDeslizante.style.transform = 'translateX(100%)';
+                        setTimeout(function() {
+                            ventanaDeslizante.style.display = 'none';
+                        }, 300); // Coincide con la duración de la transición
+                    });
+                </script>
+                
+            </div>
+        </div>
+
+        
+        <div id="paquetes" class="content">
+
+            <p style="margin-bottom: 5%;">Vuelo + hotel</p>
+             <div class="input-group" style="margin-bottom: 10%;">
+                <img src="img/svgexport-13.svg" style="margin-right: 4%;" alt="">
+                <input type="text" id="destino" style="padding: 5%;" autocomplete="off" placeholder="Origen">
+            </div>
+
+            <div class="input-group">
+                <img src="img/svgexport-13.svg" style="margin-right: 4%;" alt="">
+                <input type="text" id="destino" style="padding: 5%;" autocomplete="off" placeholder="Destino">
+            </div>
+
+            <div>
+                <img src="img/ben-13.svg" alt="">
+            </div>
+        </div>
+
+
+        <div id="hospedajes" class="content">
+            <div class="input-group" style="margin-bottom: 7%; margin-top: 5%;">
+               <img src="img/svgexport-13.svg" style="margin-right: 4%;" alt="">
+               <input type="text" id="destino" style="padding: 5%;" autocomplete="off" placeholder="Destino">
+           </div>
+
+           <div class="input-group" style="margin-bottom: 7%;">
+               <img src="img/calender-14.png" style="margin-right: 4%;" alt="">
+               <input type="text" id="destino" style="padding: 5%;" autocomplete="off" placeholder="Llegada">
+           </div>
+
+           <div class="input-group" style="margin-bottom: 7%;">
+            <img src="img/calender-14.png" style="margin-right: 4%;" alt="">
+            <input type="text" id="destino" style="padding: 5%;" autocomplete="off" placeholder="Salida">
+          </div>
+
+           <div>
+               <img src="img/boo-25.svg" alt="">
+           </div>
+        
+        </div>
+
+
+        <div id="carros" class="content">
+            <div class="input-group" style="margin-bottom: 7%; margin-top: 5%;">
+                <img src="img/svgexport-13.svg" style="margin-right: 4%;" alt="">
+                <input type="text" id="destino" style="padding: 5%;" autocomplete="off" placeholder="Lugar de recogida">
+            </div>
+
+            <div class="input-group" style="margin-bottom: 7%; margin-top: 5%;">
+                <img src="img/svgexport-13.svg" style="margin-right: 4%;" alt="">
+                <input type="text" id="destino" style="padding: 5%;" autocomplete="off" placeholder="Lugar de devolución">
+            </div>
+ 
+        </div>
+    </div>
+
+    <script src="logica.js"></script>
+
+    <div class="buttons" style="margin-bottom: 0; padding-bottom: 0;">
+
+        <section style="position: relative; top: -60px; width: 100%; height: 1%;">
+            <div class="containere" style="padding: 2%;">
+                <div class="card">
+                    <img style="border-radius: 6px;" src="img/CO-TRAVELSALE-HERO-MOBILE.png" alt="Travel Sale LATAM">
+                    <div class="card-content">
+                        <button style="border-radius: 25px; border-style: none; padding: 2%;" class="title">TRAVEL SALE LATAM</button>
+                        <p class="description">¡Aprovecha! Tiquetes con hasta 70% de descuento</p>
+                        <p class="sub-description">Además, encuentra las mejores opciones de hoteles, carros y asistencia de viaje</p>
+                        <a href="#" class="cta">¡Compra hoy!</a>
+                    </div>
+                </div>
+               
+            </div>
+
+            <section style="width: 100%; margin-top: 6%; display: flex; justify-content: center;">
+                <div style="width: 90%;">
+                    <div class="button" style="display: flex; justify-content:space-between;">
+                        <img style="background-color: rgba(191, 210, 227, 0.368); border-radius: 100px; padding: 3%; margin-right: 3%;" src="img/svgexport-15.png" alt="">
+                        <span style="color: black; margin-right: 27%;">Administra tu viaje</span>
+                        <img src="img/svgexport-16.png" style="width: 6%;" alt="">
+                    </div>
+            
+                    <div class="button" style="display: flex; justify-content:space-between;">
+                        <img style="background-color: rgba(191, 210, 227, 0.368); border-radius: 100px; padding: 3%; margin-right: 3%;" src="img/svgexport-17.png" alt="">
+                        <span style="color: black; margin-right: 27%;">Administra tu viaje</span>
+                        <img src="img/svgexport-16.png" style="width: 6%;" alt="">
+                    </div>
+            
+                    <div class="button" style="display: flex; justify-content:space-between;">
+                        <img style="background-color: rgba(191, 210, 227, 0.368); border-radius: 100px; padding: 3%; margin-right: 3%;" src="img/svgexport-18.png" alt="">
+                        <span style="color: black; margin-right: 27%;">Administra tu viaje</span>
+                        <img src="img/svgexport-16.png" style="width: 6%;" alt="">
+                    </div>
+            
+                    <div class="button" style="display: flex; justify-content:space-between;">
+                        <img style="background-color: rgba(191, 210, 227, 0.368); border-radius: 100px; padding: 3%; margin-right: 3%;" src="img/svgexport-19.png" alt="">
+                        <span style="color: black; margin-right: 27%;">Administra tu viaje</span>
+                        <img src="img/svgexport-16.png" style="width: 6%;" alt="">
+                    </div>
+                </div>
+            </section>
+
+            
+      <section style="margin: 5%; ">
+        <p style="color: rgb(16, 0, 79); font-family:sans-serif; font-size: x-large;">Descubre tu próximo viaje</p>
+        <p style="margin-top: 2%;" class="accumulate">Acumula <span class="highlight">Millas LATAM Pass</span> y <span class="highlight">Puntos Calificables</span></p>
+        <div class="flight-offers">
+            <span style="color: #000000b2;;">Ofertas de vuelo desde <span class="city" style="text-decoration: underline;">Bogotá</span><img src="img/svgexport-20.png" style="width: 6%; margin-left: 1%;" alt=""></span>
+        </div>
+
+        <!-- <div class="card" style=" margin: 5%; border-radius: 5px;">
+            <img style=" border-radius: 5px;" src="img/MIA-deals.jpg" alt="Miami">
+
+            <div class="card-content" style="padding: 4%; background-color: white; border-style: solid; border-color: rgba(220, 220, 220, 0.416); box-shadow: 4px 5px 3px #8686861b; border-radius: 5px; position: relative; top: -40px; ">
+                
+                <p style="color: black; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: x-large; color: rgb(16, 0, 79);">Miami</p>
+                <p style="color: black; font-size:smaller; margin-bottom: 5%;">Ida <strong style="color: black;">18/08/24</strong> • Vuelta <strong>25/08/24</strong></p>
+
+                <div class="tags" style="margin-bottom: 5%; display: flex;">
+                    <span style="margin-right: 4%; display: flex; justify-content: center; background-color: purple; padding: 1% 3%; border-radius: 100px; color: rgb(255, 255, 255); font-size: small;" class="tag economy">Economy</span>
+                    <span style="display: flex; justify-content: center; background-color: rgba(255, 255, 0, 0.635); padding: 1% 3%; border-radius: 100px; color: black;" class="tag miles"> <img src="img/svgexport-21.png" style="width: 10%; margin-right: 5%;" alt="">Acumula millas</span>
+                </div>
+                
+                <p style="color: black;" class="price">Precio desde <strong>COP 1.161.550</strong></p>
+                <p style="color: black;" class="taxes">Tasas incluidas</p>
+            </div>
+        </div> -->
+       
+
+        <section>
+            <style>
+                /* Estilos básicos para las secciones */
+                .section {
+                    display: none; /* Ocultar todas las secciones por defecto */
+                    
+                }
+            </style>
+            
+
+    <div id="seccion1" class="section" style="display: block;">
+        <div class="card" style=" margin: 5%; border-radius: 5px;">
+            <img style=" border-radius: 5px;" src="img/MIA-deals.jpg" alt="Miami">
+
+            <div class="card-content" style="padding: 4%; background-color: white; border-style: solid; border-color: rgba(220, 220, 220, 0.416); box-shadow: 4px 5px 3px #8686861b; border-radius: 5px; position: relative; top: -40px; ">
+                
+                <p style="color: black; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: x-large; color: rgb(16, 0, 79);">Miami</p>
+                <p style="color: black; font-size:smaller; margin-bottom: 5%;">Ida <strong style="color: black;">18/05/25</strong> • Vuelta <strong>25/05/25</strong></p>
+
+                <div class="tags" style="margin-bottom: 5%; display: flex;">
+                    <span style="margin-right: 4%; display: flex; justify-content: center; background-color: purple; padding: 1% 3%; border-radius: 100px; color: rgb(255, 255, 255); font-size: small;" class="tag economy">Economy</span>
+                    <span style="display: flex; justify-content: center; background-color: rgba(255, 255, 0, 0.635); padding: 1% 3%; border-radius: 100px; color: black;" class="tag miles"> <img src="img/svgexport-21.png" style="width: 10%; margin-right: 5%;" alt="">Acumula millas</span>
+                </div>
+                
+                <p style="color: black;" class="price">Precio desde <strong>COP 799.999</strong></p>
+                <p style="color: black;" class="taxes">Tasas incluidas</p>
+            </div>
+        </div> 
+    </div>
+
+    <div id="seccion2" class="section">
+        <div class="card" style=" margin: 5%; border-radius: 5px;">
+            <img style=" border-radius: 5px;" src="img/MDE2-deals.jpg" alt="Miami">
+
+            <div class="card-content" style="padding: 4%; background-color: white; border-style: solid; border-color: rgba(220, 220, 220, 0.416); box-shadow: 4px 5px 3px #8686861b; border-radius: 5px; position: relative; top: -40px; ">
+                
+                <p style="color: black; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: x-large; color: rgb(16, 0, 79);">Medellín</p>
+                <p style="color: black; font-size:smaller; margin-bottom: 5%;">Ida <strong style="color: black;">18/05/25</strong> • Vuelta <strong>25/05/25</strong></p>
+
+                <div class="tags" style="margin-bottom: 5%; display: flex;">
+                    <span style="margin-right: 4%; display: flex; justify-content: center; background-color: purple; padding: 1% 3%; border-radius: 100px; color: rgb(255, 255, 255); font-size: small;" class="tag economy">Economy</span>
+                    <span style="display: flex; justify-content: center; background-color: rgba(255, 255, 0, 0.635); padding: 1% 3%; border-radius: 100px; color: black;" class="tag miles"> <img src="img/svgexport-21.png" style="width: 10%; margin-right: 5%;" alt="">Acumula millas</span>
+                </div>
+                
+                <p style="color: black;" class="price">Precio desde <strong>COP 99.990</strong></p>
+                <p style="color: black;" class="taxes">Tasas incluidas</p>
+            </div>
+        </div> 
+    </div>
+
+    <div id="seccion3" class="section">
+        <div class="card" style=" margin: 5%; border-radius: 5px;">
+            <img style=" border-radius: 5px;" src="img/CLO-deals.jpg" alt="Miami">
+
+            <div class="card-content" style="padding: 4%; background-color: white; border-style: solid; border-color: rgba(220, 220, 220, 0.416); box-shadow: 4px 5px 3px #8686861b; border-radius: 5px; position: relative; top: -40px; ">
+                
+                <p style="color: black; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: x-large; color: rgb(16, 0, 79);">Cali</p>
+                <p style="color: black; font-size:smaller; margin-bottom: 5%;">Ida <strong style="color: black;">18/08/25</strong> • Vuelta <strong>25/05/24</strong></p>
+
+                <div class="tags" style="margin-bottom: 5%; display: flex;">
+                    <span style="margin-right: 4%; display: flex; justify-content: center; background-color: purple; padding: 1% 3%; border-radius: 100px; color: rgb(255, 255, 255); font-size: small;" class="tag economy">Economy</span>
+                    <span style="display: flex; justify-content: center; background-color: rgba(255, 255, 0, 0.635); padding: 1% 3%; border-radius: 100px; color: black;" class="tag miles"> <img src="img/svgexport-21.png" style="width: 10%; margin-right: 5%;" alt="">Acumula millas</span>
+                </div>
+                
+                <p style="color: black;" class="price">Precio desde <strong>COP 99.990</strong></p>
+                <p style="color: black;" class="taxes">Tasas incluidas</p>
+            </div>
+        </div> 
+    </div>
+
+    <div id="seccion4" class="section">
+        <div class="card" style=" margin: 5%; border-radius: 5px;">
+            <img style=" border-radius: 5px;" src="img/ctg-deals.jpg" alt="Miami">
+
+            <div class="card-content" style="padding: 4%; background-color: white; border-style: solid; border-color: rgba(220, 220, 220, 0.416); box-shadow: 4px 5px 3px #8686861b; border-radius: 5px; position: relative; top: -40px; ">
+                
+                <p style="color: black; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: x-large; color: rgb(16, 0, 79);">Cartagena de Indias</p>
+                <p style="color: black; font-size:smaller; margin-bottom: 5%;">Ida <strong style="color: black;">18/05/25</strong> • Vuelta <strong>25/05/25</strong></p>
+
+                <div class="tags" style="margin-bottom: 5%; display: flex;">
+                    <span style="margin-right: 4%; display: flex; justify-content: center; background-color: purple; padding: 1% 3%; border-radius: 100px; color: rgb(255, 255, 255); font-size: small;" class="tag economy">Economy</span>
+                    <span style="display: flex; justify-content: center; background-color: rgba(255, 255, 0, 0.635); padding: 1% 3%; border-radius: 100px; color: black;" class="tag miles"> <img src="img/svgexport-21.png" style="width: 10%; margin-right: 5%;" alt="">Acumula millas</span>
+                </div>
+                
+                <p style="color: black;" class="price">Precio desde <strong>COP 99.990</strong></p>
+                <p style="color: black;" class="taxes">Tasas incluidas</p>
+            </div>
+        </div> 
+    </div>
+
+    <div id="seccion5" class="section">
+
+        <div class="card" style=" margin: 5%; border-radius: 5px;">
+            <img style=" border-radius: 5px;" src="img/lim-deals.jpg" alt="Miami">
+
+            <div class="card-content" style="padding: 4%; background-color: white; border-style: solid; border-color: rgba(220, 220, 220, 0.416); box-shadow: 4px 5px 3px #8686861b; border-radius: 5px; position: relative; top: -40px; ">
+                
+                <p style="color: black; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: x-large; color: rgb(16, 0, 79);">Lima</p>
+                <p style="color: black; font-size:smaller; margin-bottom: 5%;">Ida <strong style="color: black;">18/08/24</strong> • Vuelta <strong>25/05/25</strong></p>
+
+                <div class="tags" style="margin-bottom: 5%; display: flex;">
+                    <span style="margin-right: 4%; display: flex; justify-content: center; background-color: purple; padding: 1% 3%; border-radius: 100px; color: rgb(255, 255, 255); font-size: small;" class="tag economy">Economy</span>
+                    <span style="display: flex; justify-content: center; background-color: rgba(255, 255, 0, 0.635); padding: 1% 3%; border-radius: 100px; color: black;" class="tag miles"> <img src="img/svgexport-21.png" style="width: 10%; margin-right: 5%;" alt="">Acumula millas</span>
+                </div>
+                
+                <p style="color: black;" class="price">Precio desde <strong>COP 650.000</strong></p>
+                <p style="color: black;" class="taxes">Tasas incluidas</p>
+            </div>
+        </div> 
+    </div>
+
+   
+
+    <div style="display: flex; justify-content: end; padding: 5%;">
+        <button style="padding: 4%; background-color: purple; color: white; border-style: none; border-radius: 8px;" onclick="cambiarSeccion()">Cambiar Sección</button>
+    </div>
+
+    <script>
+        var secciones = document.querySelectorAll('.section'); // Obtener todas las secciones
+        var indiceActual = 0; // Variable para mantener el índice de la sección actual
+    
+        function cambiarSeccion() {
+            // Ocultar la sección actual
+            secciones[indiceActual].style.display = 'none';
+    
+            // Incrementar el índice y volver al inicio si se alcanza el final
+            indiceActual = (indiceActual + 1) % secciones.length;
+    
+            // Mostrar la nueva sección
+            secciones[indiceActual].style.display = 'block';
+        }
+    </script>
+        </section>
+      </section>
+
+
+
+        </section>
+
+
+      
+
+    </div>
+
+   
+   </section>
+
+   <style>
+    #faqWrapper_9x {
+      max-width: 800px;
+      margin: 2rem auto;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+    
+    .mainSection_z8 {
+      padding: 20px;
+      background: white;
+    }
+    
+    .tx-1a#titleSection_k3 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      color: #1a237e;
+    }
+    
+    .subSection_qw {
+      margin-bottom: 25px;
+    }
+    
+    .subT-2b {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #0d47a1;
+    }
+    
+    .parag-3c {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      color: #424242;
+    }
+    
+    .highlightBox_t7 {
+      background: #e3f2fd;
+      padding: 15px;
+      border-radius: 4px;
+      margin: 25px 0;
+    }
+    
+    .link-bold-4d {
+      font-weight: 700;
+      color: #1976d2;
+      font-size: 16px;
+    }
+    
+    .listContainer_5e {
+      margin: 20px 0 30px 40px;
+    }
+    
+    .listItem_5e {
+      font-size: 15px;
+      margin-bottom: 12px;
+      color: #616161;
+      position: relative;
+      left: -15px;
+    }
+    
+    .separator-6f {
+      color: transparent;
+      margin: 30px 0;
+      border-top: 2px solid #bdbdbd;
+      width: 50px;
+    }
+    
+    .footerLink_r2 {
+      margin-top: 25px;
+    }
+    
+    .moreLink-7g {
+      color: #1976d2;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    
+    /* Estilos para replicar formato markdown */
+    .subT-2b::before,
+    .tx-1a#titleSection_k3::before {
+      content: none !important; /* Elimina pseudo-elementos de markdown */
+    }
+    
+    .listItem_5e::before {
+      content: "-";
+      position: absolute;
+      left: -15px;
+      color: #616161;
+    }
+    </style>
+    
+    <div id="faqWrapper_9x">
+      <section class="mainSection_z8">
+        <div class="tx-1a" id="titleSection_k3">Preguntas Frecuentes</div>
+        
+        <div class="subSection_qw">
+          <div class="subT-2b">¿Qué es la Experiencia Digital de LATAM Airlines?</div>
+          <div class="parag-3c">En LATAM Airlines te ofrecemos una experiencia digital donde podrás comprar de forma rápida, cómoda y sencilla tus pasajes aéreos y todo lo relacionado a tu viaje.</div>
+        </div>
+    
+        <div class="highlightBox_t7">
+          <span class="link-bold-4d">Conoce más sobre nuestra Experiencia Digital</span>
+        </div>
+    
+        <div class="listContainer_5e">
+          <div class="listItem_5e">¿Qué tipo de vuelos puedo comprar en LATAM Airlines?</div>
+          <div class="listItem_5e">¿Qué medios de pago estarán disponibles en esta promoción?</div>
+          <div class="listItem_5e">¿Dónde puedo encontrar ofertas de LATAM Travel?</div>
+          <div class="listItem_5e">¿Cómo es la política de flexibilidad de LATAM?</div>
+        </div>
+    
+        <div class="footerLink_r2">
+          <div class="moreLink-7g"> Ver otros destinos </div>
+        </div>
+      </section>
+    </div>
+
+
+   <footer style="display: flex; justify-content:center; margin: 5%; padding: 5%; ">
+
+    <style>
+        li{
+            margin-bottom: 10%;
+            color: gray;
+        }
+    </style>
+
+    <section style="margin-right: 20%;">
+        <p style="color: rgb(16, 0, 79); font-size: large; margin-bottom: 15%;">Latam Airlines</p>
+        <ul style=" list-style: none;">
+            <li>Inicio</li>
+            <li>Acerca de LATAM</li>
+            <li>Experiencia LATAM</li>
+            <li>Prepara tu viaje</li>
+            <li>Mis viajes</li>
+            <li>Estado de vuelo</li>
+            <li>Check-in</li>
+            <li>Destinos</li>
+            <li>LATAM Wallet</li>
+            <li>Crea tu cuenta</li>
+            <li>Centro de ayuda</li>
+            <li>Sala de prensa</li>
+            <li>Sostenebilidad</li>
+        </ul>
+    </section>
+
+    <section >
+        <ul style="display: flex; flex-direction: column; align-items:start; list-style: none;">
+            <p style="color: rgb(16, 0, 79); font-size: large; margin-bottom: 15%;">Información legal</p>
+            <li>Políticas de seguridad y privacidad</li>
+            <li>Términos y condiciones generales</li>
+            <li>Términos de uso</li>
+            <li>Conoce tus derechos y deberes</li>
+            <li>tasas, cargos e impuestos</li>
+            <li>Política de tratamiento de datos personales</li>
+            
+        </ul>
+    </section>
+ </footer>
+
+ <footer style="margin: 5%; padding: 5%; ">
+
+    <style>
+        li{
+            margin-bottom: 10%;
+            color: gray;
+        }
+    </style>
+
+    <section style="margin-right: 20%;">
+        <p style="color: rgb(16, 0, 79); font-size: large; margin-bottom: 10%;">Portales asociados</p>
+        <ul style=" list-style: none;">
+            <li>lATAM pass</li>
+            <li>Vamos / LATAM</li>
+            <li>Paquetes, hoteles y más</li>
+            <li>LATAM cargo</li>
+            <li>LATAM Corporate</li>
+            <li>Trabaja con nosotros</li>
+            <li>Relación con inversionistas</li>
+            <li>Registro Nacinal de Turismo</li>
+            <li>Aeronáutica civil</li>
+            <li>Superintendencia de Transporte</li>
+        </ul>
+    </section>
+ </footer>
+
+ <footer style="margin: 5%; padding: 5%; ">
+
+    <style>
+        li{
+            margin-bottom: 10%;
+            color: gray;
+        }
+    </style>
+
+    <section>
+        <p style="color: rgb(16, 0, 79); font-size: large; margin-bottom: 10%;">Contacta con nosotros</p>
+        <img src="img/face-39.png" alt="">
+        <img src="img/x-40.png" alt="">
+        <img src="img/yt-41.png" alt="">
+        <img src="img/ig-42.png" alt="">
+        
+    </section>
+ </footer>
+
+ <footer style=" padding: 5%; background-color: rgb(237, 237, 237); ">
+
+    <style>
+        li{
+            margin-bottom: 10%;
+            color: gray;
+        }
+    </style>
+
+    <section style=" display: flex; justify-content: center;">
+        <img src="img/LATAM Logo.png" width="40%" alt="">
+    </section>
+
+    <section>
+        <p style="color: grey; font-size: small; text-align: center; margin-top: 5%;">© 2024 LATAM Airlines Colombia. NIT: 890.704.196-6, Aerovias de Integración Regional S.A - Aires S.A. Av. El Dorado No.103-08 Entrada 1 - Hangar. customer_service@sac.latam.com. 601 - 5185800
+           <br> <br> <span> Certificado por:</span></p>
+    </section>
+
+    <section style="display: flex; justify-content: center;">
+        <img src="img/PCI.png" style="margin-top: 5%;" alt="">
+    </section>
+ </footer>
+</div>
+
+
+</body>
+</html>

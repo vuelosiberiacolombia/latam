@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Card</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #ffffff;
+            color: #fff;
+            padding-bottom: 25%;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .bodys {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items:start; 
+            margin: 0;
+            cursor: pointer;
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            padding: 0px;
+            box-sizing: border-box;
+            margin-top: 5%;
+        }
+        .headere {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .headere div {
+            padding: 5px 10px;
+            border-radius: 100px 0px 100px 5px;
+            font-size: 0.9em;
+        }
+        .recommended {
+            background-color: #ffcc66;
+            color: #000;
+        }
+        .cheapest {
+            background-color: #3ca692;
+            color: #fff;
+        }
+        .flight-info {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .flight-info div {
+            text-align: center;
+        }
+        .flight-info .time {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #1f2350;
+        }
+        .flight-info .location {
+            font-size: 1.2em;
+            color: #1f2350;
+        }
+        .details {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .details .duration {
+            font-size: 1em;
+            color: #888;
+        }
+        .details .direct {
+            font-size: 1em;
+            color: #4b4bbd;
+            font-weight: bold;
+        }
+        .price {
+            text-align: right;
+            margin-bottom: 0px;
+        }
+        .price span {
+            display: block;
+            font-size: 1em;
+            color: #888;
+        }
+        .price .amount {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #1f2350;
+        }
+        .footer {
+            text-align: center;
+        }
+        .footer img {
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .footer span {
+            font-size: 1em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    
+   <header style="padding: 5%;
+   background-color: rgb(16, 0, 79);
+      display: flex;
+       justify-content: space-between;
+       align-items: center;">
+
+      <img style="width: 30%;" src="img/MobileNegative.svg" alt="LATAM Airlines Logo" class="logo">
+      <button class="login-button" style="margin-left: 27%; background-color: #46158298;
+           color: #fff;
+           border: none;
+           border-radius: 4px;
+           padding: 8px 12px;
+           border-radius: 18px;
+           cursor: pointer;"><h3 style="margin: 0;">Iniciar sesión</h3></button>
+      <div class="menu-icon">
+        <i class="fa-solid fa-bars fa-lg" onclick="toggleMenu()"></i>
+   </header>
+
+   <section style="margin: 5% 5% 0% 5%;">
+    <p style="margin-bottom: 0%; color: black; font-size: x-large; color: rgba(68, 30, 219, 0.765);">Elige un <span style="color: rgb(27, 0, 136);">vuelo de Vuelta</span></p>
+</section>
+
+<section style="margin: 5%;">
+    <p style="font-size: smaller; color: grey; margin-bottom: 3%;">Ordenado por: <span style="color: rgb(27, 0, 136);"> <strong>Recomendado</strong></span></p>
+    <p style="font-size:x-small; color: gray; margin:  0%;">El orden aplicará para tu vuelo de ida y vuelta.</p>
+</section>
+
+   <section id="flights-container">
+    <!-- Los vuelos se generarán automáticamente aquí -->
+   </section>
+
+<script>
+    // Datos de vuelos con horarios y duraciones variadas
+    const flightData = [
+        { departure: "3:09 p. m.", arrival: "4:03 p. m.", duration: "0 h 54 min" },
+        { departure: "5:09 p. m.", arrival: "6:03 p. m.", duration: "0 h 54 min" },
+        { departure: "6:00 p. m.", arrival: "7:10 p. m.", duration: "1 h 10 min" },
+        { departure: "7:09 p. m.", arrival: "8:09 p. m.", duration: "1 h 00 min" },
+        { departure: "9:45 p. m.", arrival: "10:50 p. m.", duration: "1 h 05 min" },
+        { departure: "9:00 p. m.", arrival: "9:55 p. m.", duration: "0 h 55 min" },
+        { departure: "8:09 a. m.", arrival: "9:03 a. m.", duration: "0 h 54 min" },
+        { departure: "7:30 p. m.", arrival: "8:35 p. m.", duration: "1 h 05 min" },
+        { departure: "5:15 a. m.", arrival: "6:10 a. m.", duration: "0 h 55 min" },
+        { departure: "7:09 p. m.", arrival: "8:03 p. m.", duration: "0 h 54 min" },
+        { departure: "7:09 p. m.", arrival: "8:29 p. m.", duration: "1 h 20 min" },
+        { departure: "8:09 p. m.", arrival: "9:03 p. m.", duration: "0 h 54 min" },
+        { departure: "8:20 p. m.", arrival: "9:00 p. m.", duration: "0 h 40 min" },
+        { departure: "1:09 p. m.", arrival: "2:03 p. m.", duration: "0 h 54 min" },
+        { departure: "6:00 p. m.", arrival: "7:00 p. m.", duration: "1 h 00 min" },
+        { departure: "3:09 a. m.", arrival: "4:03 a. m.", duration: "0 h 54 min" },
+        { departure: "10:09 a. m.", arrival: "11:03 a. m.", duration: "0 h 54 min" },
+        { departure: "11:09 p. m.", arrival: "12:03 a. m.", duration: "0 h 54 min" },
+        { departure: "4:09 a. m.", arrival: "5:03 a. m.", duration: "0 h 54 min" }
+    ];
+
+    // Función para generar precio aleatorio entre 14,690 y 16,690 CLP
+    function generateRandomPrice() {
+        const min = 14690;
+        const max = 16690;
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    // Función para formatear precio chileno
+    function formatPrice(price) {
+        return '$' + price.toLocaleString('es-CL') + ' CLP';
+    }
+
+    // Función para crear elemento de vuelo
+    function createFlightElement(flight, index) {
+        const price = generateRandomPrice();
+        const isCheapest = Math.random() < 0.4; // 40% de probabilidad de ser "Más económico"
+        
+        return `
+        <section class="bodys" data-price="${price}">
+            <div class="card">
+                <div class="headere">
+                    <section style="color: rgb(255, 255, 255); padding: 2%; padding-right: 8%; font-size: small; border-radius: 100px 0px 1000px 0px;" class="recommended">Recomendado</section>
+                    ${isCheapest ? '<div class="cheapest" style="padding-right: 8%; padding-left: 6%;">Más económico</div>' : ''}
+                </div>
+                <div class="flight-info">
+                    <div>
+                        <div class="time" style="font-size: medium;">${flight.departure}</div>
+                        <div class="location location1"></div>
+                    </div>
+                    <div class="details">
+                        <div class="duration" style="font-size:small;">Duración<br>${flight.duration}</div>
+                    </div>
+                    <div>
+                        <div class="time" style="font-size: medium;">${flight.arrival}</div>
+                        <div class="location location2"></div>
+                    </div>
+                </div>
+                <section>
+                    <div class="price" style="display: flex; justify-content: space-between; margin-right: 6%;">
+                        <p style="font-size: medium; color: blue; text-decoration: underline; margin-left: 8%;">Directo</p>
+                        <div>
+                            <span style="color: rgb(27, 0, 136);">Tarifa desde</span>
+                            <div class="amount" style="font-size: larger; color: rgb(27, 0, 136);"></div>
+                        </div>
+                    </div>
+                </section>
+                <div class="footer" style="margin-bottom: 5%;">
+                    <p style="font-size: small; color: gray; margin: 0% 0% 2% 0%;">Operado por </p>
+                    <img src="img/LATAM Logo.png" alt="LATAM Airlines">
+                </div>
+            </div>
+        </section>`;
+    }
+
+    // Generar todos los vuelos
+    function generateFlights() {
+        const container = document.getElementById('flights-container');
+        let flightsHTML = '';
+        
+        flightData.forEach((flight, index) => {
+            flightsHTML += createFlightElement(flight, index);
+        });
+        
+        container.innerHTML = flightsHTML;
+    }
+
+    // Inicializar la página
+    function initializePage() {
+        generateFlights();
+        
+        // Obtener los valores guardados de sessionStorage
+        var origen = sessionStorage.getItem('origen') || 'SCL';
+        var destino = sessionStorage.getItem('destino') || 'CCP';
+        var personas = parseInt(sessionStorage.getItem('personas')) || 1;
+
+        // Mostrar los valores en todas las secciones con clase bodys
+        document.querySelectorAll('.bodys').forEach(function(section) {
+            var price = parseInt(section.getAttribute('data-price'));
+            
+            section.querySelector('.location1').textContent = origen;
+            section.querySelector('.location2').textContent = destino;
+
+            // Calcular el total multiplicando personas por el precio especificado
+            var total = personas * price;
+
+            // Mostrar el total en el elemento con clase "amount"
+            section.querySelector('.amount').textContent = formatPrice(total);
+        });
+
+        // Añadir evento de clic a todos los elementos con clase "bodys" para redirigir a una nueva página
+        document.querySelectorAll('.bodys').forEach(function(element) {
+            element.addEventListener('click', function() {
+                window.location.href = 'cargatarifas.html';
+            });
+        });
+    }
+
+    // Ejecutar cuando se carga la página
+    document.addEventListener('DOMContentLoaded', initializePage);
+</script>
+    
+</body>
+</html>

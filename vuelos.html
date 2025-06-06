@@ -108,9 +108,9 @@
         }
     </style>
 </head>
+
 <body>
-    
-   <header style="padding: 5%;
+    <header style="padding: 5%;
    background-color: rgb(16, 0, 79);
       display: flex;
        justify-content: space-between;
@@ -127,7 +127,7 @@
       <div class="menu-icon">
         <i class="fa-solid fa-bars fa-lg" onclick="toggleMenu()"></i>
    </header>
-   
+
    <section style="margin: 5% 5% 0% 5%;">
     <p style="margin-bottom: 0%; color: black; font-size: x-large; color: rgba(68, 30, 219, 0.765);">Elige un <span style="color: rgb(27, 0, 136);">vuelo de ida</span></p>
 </section>
@@ -137,71 +137,65 @@
     <p style="font-size:x-small; color: gray; margin:  0%;">El orden aplicará para tu vuelo de ida y vuelta.</p>
 </section>
 
-   <section id="flights-container">
-    <!-- Los vuelos se generarán dinámicamente aquí -->
+   <section id="flight-container">
+    <!-- Los vuelos se generarán automáticamente aquí -->
    </section>
 
 <script>
-    // Datos de vuelos con horarios y duraciones
+    // Datos de los vuelos
     const flightData = [
-        { departure: "3:09 p. m.", arrival: "4:03 p. m.", duration: "0 h 54 min", recommended: true, cheapest: true },
-        { departure: "5:09 p. m.", arrival: "6:03 p. m.", duration: "0 h 54 min", recommended: true, cheapest: false },
-        { departure: "6:00 p. m.", arrival: "7:10 p. m.", duration: "1 h 10 min", recommended: true, cheapest: true },
-        { departure: "7:09 p. m.", arrival: "8:09 p. m.", duration: "1 h 00 min", recommended: true, cheapest: true },
-        { departure: "3:09 p. m.", arrival: "4:03 p. m.", duration: "0 h 54 min", recommended: true, cheapest: false },
-        { departure: "9:45 p. m.", arrival: "10:50 p. m.", duration: "1 h 05 min", recommended: true, cheapest: false },
-        { departure: "9:00 p. m.", arrival: "9:55 p. m.", duration: "0 h 55 min", recommended: true, cheapest: true },
-        { departure: "8:09 a. m.", arrival: "9:03 a. m.", duration: "0 h 54 min", recommended: true, cheapest: true },
-        { departure: "7:30 p. m.", arrival: "8:35 p. m.", duration: "1 h 05 min", recommended: true, cheapest: false },
-        { departure: "5:15 a. m.", arrival: "6:10 a. m.", duration: "0 h 55 min", recommended: true, cheapest: true },
-        { departure: "7:09 p. m.", arrival: "8:03 p. m.", duration: "0 h 54 min", recommended: true, cheapest: false },
-        { departure: "7:09 p. m.", arrival: "8:29 p. m.", duration: "1 h 20 min", recommended: true, cheapest: true },
-        { departure: "8:09 p. m.", arrival: "9:03 p. m.", duration: "0 h 54 min", recommended: true, cheapest: true },
-        { departure: "5:09 p. m.", arrival: "6:03 p. m.", duration: "0 h 54 min", recommended: true, cheapest: false },
-        { departure: "3:09 p. m.", arrival: "4:03 p. m.", duration: "0 h 54 min", recommended: true, cheapest: false },
-        { departure: "6:00 p. m.", arrival: "7:00 p. m.", duration: "1 h 00 min", recommended: true, cheapest: true },
-        { departure: "8:20 p. m.", arrival: "9:00 p. m.", duration: "0 h 40 min", recommended: true, cheapest: true },
-        { departure: "1:09 p. m.", arrival: "2:03 p. m.", duration: "0 h 54 min", recommended: true, cheapest: true },
-        { departure: "8:09 a. m.", arrival: "9:03 a. m.", duration: "0 h 54 min", recommended: true, cheapest: true },
-        { departure: "3:09 a. m.", arrival: "4:03 a. m.", duration: "0 h 54 min", recommended: true, cheapest: true },
-        { departure: "10:09 a. m.", arrival: "11:03 a. m.", duration: "0 h 54 min", recommended: true, cheapest: true },
-        { departure: "11:09 p. m.", arrival: "12:03 a. m.", duration: "0 h 54 min", recommended: true, cheapest: false },
-        { departure: "4:09 a. m.", arrival: "5:03 a. m.", duration: "0 h 54 min", recommended: true, cheapest: false }
+        { time: "3:09 p. m.", arrivalTime: "4:03 p. m.", duration: "0 h 54 min", tags: ["recommended", "cheapest"] },
+        { time: "5:09 p. m.", arrivalTime: "6:03 p. m.", duration: "0 h 54 min", tags: ["recommended"] },
+        { time: "6:00 p. m.", arrivalTime: "7:10 p. m.", duration: "1 h 10 min", tags: ["recommended", "cheapest"] },
+        { time: "7:09 p. m.", arrivalTime: "8:09 p. m.", duration: "1 h 00 min", tags: ["recommended", "cheapest"] },
+        { time: "3:09 p. m.", arrivalTime: "4:03 p. m.", duration: "0 h 54 min", tags: ["recommended"] },
+        { time: "9:45 p. m.", arrivalTime: "10:50 p. m.", duration: "1 h 05 min", tags: ["recommended"] },
+        { time: "9:00 p. m.", arrivalTime: "9.55 p. m.", duration: "0 h 55 min", tags: ["recommended", "cheapest"] },
+        { time: "8:09 A. m.", arrivalTime: "9:03 A. m.", duration: "0 h 54 min", tags: ["recommended", "cheapest"] },
+        { time: "7:30 p. m.", arrivalTime: "8:35 p. m.", duration: "1 h 05 min", tags: ["recommended"] },
+        { time: "5:15 A. m.", arrivalTime: "6:10 A. m.", duration: "0 h 55 min", tags: ["recommended", "cheapest"] },
+        { time: "7:09 p. m.", arrivalTime: "8:03 p. m.", duration: "0 h 54 min", tags: ["recommended"] },
+        { time: "7:09 p. m.", arrivalTime: "8:29 p. m.", duration: "1 h 20 min", tags: ["recommended", "cheapest"] },
+        { time: "8:09 p. m.", arrivalTime: "9:03 p. m.", duration: "0 h 54 min", tags: ["recommended", "cheapest"] },
+        { time: "5:09 p. m.", arrivalTime: "6:03 p. m.", duration: "0 h 54 min", tags: ["recommended"] },
+        { time: "3:09 p. m.", arrivalTime: "4:03 p. m.", duration: "0 h 54 min", tags: ["recommended"] },
+        { time: "6:00 p. m.", arrivalTime: "7:00 p. m.", duration: "1 h 00 min", tags: ["recommended", "cheapest"] },
+        { time: "8:20 p. m.", arrivalTime: "9:00 p. m.", duration: "0 h 40 min", tags: ["recommended", "cheapest"] },
+        { time: "1:09 p. m.", arrivalTime: "2:03 p. m.", duration: "0 h 54 min", tags: ["recommended", "cheapest"] },
+        { time: "8:09 A. m.", arrivalTime: "9:03 A. m.", duration: "0 h 54 min", tags: ["recommended", "cheapest"] },
+        { time: "3:09 A. m.", arrivalTime: "4:03 A. m.", duration: "0 h 54 min", tags: ["recommended", "cheapest"] },
+        { time: "10:09 A. m.", arrivalTime: "11:03 p. m.", duration: "0 h 54 min", tags: ["recommended", "cheapest"] },
+        { time: "11:09 p. m.", arrivalTime: "12:03 p. m.", duration: "0 h 54 min", tags: ["recommended"] },
+        { time: "4:09 A. m.", arrivalTime: "5:03 A. m.", duration: "0 h 54 min", tags: ["recommended"] }
     ];
 
-    // Función para generar precio aleatorio entre 14.690 y 16.690 CLP
+    // Función para generar precio aleatorio entre 13,999 y 15,000
     function generateRandomPrice() {
-        const min = 14690;
-        const max = 16690;
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    // Función para formatear precio en CLP
-    function formatPrice(price) {
-        return '$' + price.toLocaleString('es-CL') + ' CLP';
+        return Math.floor(Math.random() * (15000 - 13999 + 1)) + 13999;
     }
 
     // Función para crear una tarjeta de vuelo
     function createFlightCard(flight, index) {
-        const basePrice = generateRandomPrice();
+        const price = generateRandomPrice();
+        const isLast = index === flightData.length - 1;
         
         return `
-        <section class="bodys" data-price="${basePrice}" data-index="${index}">
+        <section class="bodys" data-price="${price}" ${isLast ? 'style="margin-bottom: 8%;"' : ''}>
             <div class="card">
                 <div class="headere">
                     <section style="color: rgb(255, 255, 255); padding: 2%; padding-right: 8%; font-size: small; border-radius: 100px 0px 1000px 0px;" class="recommended">Recomendado</section>
-                    ${flight.cheapest ? '<div class="cheapest" style="padding-right: 8%; padding-left: 6%;">Más económico</div>' : ''}
+                    ${flight.tags.includes('cheapest') ? '<div class="cheapest" style="padding-right: 8%; padding-left: 6%;">Más económico</div>' : ''}
                 </div>
                 <div class="flight-info">
                     <div>
-                        <div class="time" style="font-size: medium;">${flight.departure}</div>
+                        <div class="time" style="font-size: medium;">${flight.time}</div>
                         <div class="location location1"></div>
                     </div>
                     <div class="details">
                         <div class="duration" style="font-size:small;">Duración<br>${flight.duration}</div>
                     </div>
                     <div>
-                        <div class="time" style="font-size: medium;">${flight.arrival}</div>
+                        <div class="time" style="font-size: medium;">${flight.arrivalTime}</div>
                         <div class="location location2"></div>
                     </div>
                 </div>
@@ -225,51 +219,60 @@
 
     // Generar todas las tarjetas de vuelo
     function generateFlightCards() {
-        const container = document.getElementById('flights-container');
-        let html = '';
-        
-        flightData.forEach((flight, index) => {
-            html += createFlightCard(flight, index);
-        });
-        
-        container.innerHTML = html;
+        const container = document.getElementById('flight-container');
+        const cardsHTML = flightData.map((flight, index) => createFlightCard(flight, index)).join('');
+        container.innerHTML = cardsHTML;
     }
 
     // Función para actualizar precios y ubicaciones
     function updateFlightInfo() {
-        // Obtener los valores guardados de sessionStorage
-        var origen = sessionStorage.getItem('origen') || 'SCL';
-        var destino = sessionStorage.getItem('destino') || 'CCP';
+        // Obtener los valores (usando valores por defecto para demostración)
+        var origen = 'Santiago';
+        var destino = 'Valparaíso';  
+        var personas = 1;
+
+        // En tu código real, descomenta estas líneas para usar sessionStorage:
+       
+        var origen = sessionStorage.getItem('origen') || 'Santiago';
+        var destino = sessionStorage.getItem('destino') || 'Valparaíso';
         var personas = parseInt(sessionStorage.getItem('personas')) || 1;
+        
 
         // Mostrar los valores en todas las secciones con clase bodys
         document.querySelectorAll('.bodys').forEach(function(section) {
-            var basePrice = parseInt(section.getAttribute('data-price'));
+            var price = parseInt(section.getAttribute('data-price'));
             
             section.querySelector('.location1').textContent = origen;
             section.querySelector('.location2').textContent = destino;
 
-            // Calcular el total multiplicando personas por el precio base
-            var total = personas * basePrice;
+            // Calcular el total multiplicando personas por el precio especificado
+            var total = personas * price;
 
-            // Mostrar el total en el elemento con clase "amount"
-            section.querySelector('.amount').textContent = formatPrice(total);
+            // Mostrar el total en el elemento con clase "amount" con formato chileno
+            section.querySelector('.amount').textContent = '$' + total.toLocaleString('es-CL') + ' CLP';
         });
 
-        // Añadir evento de clic a todos los elementos con clase "bodys"
+        // Añadir evento de clic a todos los elementos con clase "bodys" para redirigir
         document.querySelectorAll('.bodys').forEach(function(element) {
             element.addEventListener('click', function() {
-                window.location.href = 'cargatarifas.html';
+               
+                window.location.href = 'cargatarifas1.html';
+                
+                // Para demostración:
+                console.log('Click en vuelo - Precio:', element.getAttribute('data-price'));
+                
             });
         });
     }
 
     // Inicializar la página
-    document.addEventListener('DOMContentLoaded', function() {
+    function initializePage() {
         generateFlightCards();
         updateFlightInfo();
-    });
+    }
+
+    // Ejecutar cuando se carga la página
+    document.addEventListener('DOMContentLoaded', initializePage);
 </script>
-    
 </body>
 </html>
